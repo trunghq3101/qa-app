@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import Aux from './hoc/Aux';
-import Toolbar from './components/Toolbar/Toolbar';
+import QuestionHolder from './containers/QuestionHolder/QuestionHolder';
+import Layout from './components/Layout/Layout';
 
 class App extends Component {
 
     render() {
         return (
             <Aux>
-                <Toolbar />
-                <div>
-                    <div>Question</div>
-                    <div>Answers</div>
-                    <div>Controls</div>
-                    <div>Answer Form</div>
-                </div>
+                <Layout>
+                    <QuestionHolder />
+                </Layout>
             </Aux>
         );
     }
