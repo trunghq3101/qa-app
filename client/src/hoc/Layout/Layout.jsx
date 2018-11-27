@@ -1,6 +1,6 @@
 import React from 'react'
-import Toolbar from '../Toolbar/Toolbar';
-import Aux from '../../hoc/Aux';
+import Toolbar from '../../components/Toolbar/Toolbar';
+import Aux from '../Aux/Aux';
 
 export default (props) => (
     <Aux>

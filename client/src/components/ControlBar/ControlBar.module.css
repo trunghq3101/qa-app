@@ -1,0 +1,16 @@
+.DesktopOnly {
+    display: none
+}
+
+.MobileOnly {
+    display: block;
+}
+
+@media (min-width: 800px) {
+    .DesktopOnly {
+        display: block
+    }
+    .MobileOnly {
+        display: none
+    }
+}

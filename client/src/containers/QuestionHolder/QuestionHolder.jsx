@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Question from '../../components/Question/Question';
+import ControlBar from '../../components/ControlBar/ControlBar';
 
 export default class QuestionHolder extends Component {
     render() {
@@ -8,7 +9,16 @@ export default class QuestionHolder extends Component {
                 <div className="col-12 col-sm-10">
                     <div className="card px-3 py-2">
                         <Question />
-                        <div>Controls</div>
+                        <ControlBar 
+                            mainControls={{
+                                Answer: "",
+                                Follow: ""
+                            }}
+                            subControls={{
+                                Comment: "",
+                                Share: ""
+                            }}
+                        />
                         <div>Answer Form</div>
                         <div>Answers</div>
                     </div>

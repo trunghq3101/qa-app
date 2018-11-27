@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Aux from './hoc/Aux';
+import Aux from './hoc/Aux/Aux';
 import QuestionHolder from './containers/QuestionHolder/QuestionHolder';
-import Layout from './components/Layout/Layout';
+import Layout from './hoc/Layout/Layout';
 
 class App extends Component {
 
