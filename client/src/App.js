@@ -1,31 +1,20 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import Aux from './hoc/Aux';
+import Toolbar from './components/Toolbar/Toolbar';
 
 class App extends Component {
 
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-         welcome: ""
-      }
-    }
-    
-    componentDidMount() {
-        Axios.get("/api/welcome")
-            .then( res => {
-                this.setState({ welcome: res.data.result })
-            })
-            .catch( err => {
-                console.log(err);
-            })
-    }
-
     render() {
         return (
-            <div>
-                <h1>{this.state.welcome}</h1>
-            </div>
+            <Aux>
+                <Toolbar />
+                <div>
+                    <div>Question</div>
+                    <div>Answers</div>
+                    <div>Controls</div>
+                    <div>Answer Form</div>
+                </div>
+            </Aux>
         );
     }
 }
