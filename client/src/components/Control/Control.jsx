@@ -19,8 +19,7 @@ export default (props) => {
         case "button":
             ctrlView = (
                 <button
-                    type="button"
-                    className="btn btn-light mx-1"
+                    className="btn mx-1"
                     onClick={props.clicked}>
                     <span>
                         <FontAwesomeIcon icon={icons[props.ctrlName]} /> {props.ctrlName}

@@ -3,10 +3,10 @@ import QuestionView from '../../components/Question/QuestionView';
 import AnswerForm from '../../components/Answer/AnswerForm';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import Aux from '../../hoc/Aux/Aux';
-import FullControl from '../../components/Controls/FullControl/Control';
 import AnswerList from '../../components/Answer/AnswerList';
 import CommentForm from '../../components/Comment/CommentForm';
 import CommentList from '../../components/Comment/CommentList';
+import Control from '../../components/Control/Control';
 
 const user = {
     username: "Trung Hoang"
@@ -104,11 +104,11 @@ export default class QuestionHolder extends Component {
                         <ControlBar 
                             left={(
                                 <Aux>
-                                    <FullControl
+                                    <Control
                                         ctrlType="button"
                                         ctrlName="Answer"
                                         clicked={this.answerClickedHandler}/>
-                                    <FullControl
+                                    <Control
                                         ctrlType="button"
                                         ctrlName="Follow"
                                         clicked={this.followClickedHandler}/>
@@ -116,11 +116,11 @@ export default class QuestionHolder extends Component {
                             )}
                             rightDesktop={(
                                 <Aux>
-                                    <FullControl
+                                    <Control
                                         ctrlType="icon"
                                         ctrlName="Comment"
                                         clicked={this.commentClickedHandler}/>
-                                    <FullControl
+                                    <Control
                                         ctrlType="icon"
                                         ctrlName="Share"
                                         clicked={this.shareClickedHandler}/>
@@ -128,11 +128,11 @@ export default class QuestionHolder extends Component {
                             )}
                             moreMobile={(
                                 <Aux>
-                                    <FullControl
+                                    <Control
                                         ctrlType="text"
                                         ctrlName="Comment"
                                         clicked={this.commentClickedHandler}/>
-                                    <FullControl
+                                    <Control
                                         ctrlType="text"
                                         ctrlName="Share"
                                         clicked={this.shareClickedHandler}/>

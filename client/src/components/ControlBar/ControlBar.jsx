@@ -5,7 +5,7 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 export default (props) => (
 
-    <div className="row my-2">
+    <div className={`row my-2 ${classes.ControlBar}`}>
         <div className="col-9 col-md-6">
             {props.left}
         </div>
