@@ -5,6 +5,8 @@ import ControlBar from '../../components/ControlBar/ControlBar';
 import Aux from '../../hoc/Aux/Aux';
 import FullControl from '../../components/Controls/FullControl/Control';
 import AnswerList from '../../components/Answer/AnswerList';
+import CommentForm from '../../components/Comment/CommentForm';
+import CommentList from '../../components/Comment/CommentList';
 
 const user = {
     username: "Trung Hoang"
@@ -17,8 +19,11 @@ export default class QuestionHolder extends Component {
     
       this.state = {
          isAnswerFormHidden: true,
+         isCommentFormHidden: true,
          answer: "",
-         answerList: []
+         answerList: [],
+         comment: "",
+         commentList: []
       }
     }
     
@@ -35,7 +40,11 @@ export default class QuestionHolder extends Component {
     }
 
     commentClickedHandler = () => {
-        alert("Start to comment");
+        this.setState(prevState => {
+            return {
+                isCommentFormHidden: !prevState.isCommentFormHidden
+            }
+        })
     }
 
     shareClickedHandler = () => {
@@ -48,9 +57,15 @@ export default class QuestionHolder extends Component {
         })
     }
 
+    commentChangedHandler = (e) => {
+        this.setState({
+            comment: e.target.value
+        })
+    }
+
     answerSubmitClickedHandler = (e) => {
         e.preventDefault();
-        const value = e.target["answer"].value
+        const value = e.target["answer"].value;
         this.setState( prevState => {
             return {
                 answerList: [...prevState.answerList, {
@@ -61,6 +76,23 @@ export default class QuestionHolder extends Component {
                 }]
             }
         })
+        this.answerClickedHandler();
+    }
+
+    commentSubmitClickedHandler = (e) => {
+        e.preventDefault();
+        const value = e.target["comment"].value;
+        this.setState( prevState => {
+            return {
+                commentList: [...prevState.commentList, {
+                    id: prevState.commentList.length + 1,
+                    user: user,
+                    commentInfo: new Date(),
+                    comment: value
+                }]
+            }
+        })
+        this.commentClickedHandler();
     }
 
     render() {
@@ -111,6 +143,12 @@ export default class QuestionHolder extends Component {
                             valueChanged={this.answerChangedHandler}
                             value={this.state.answer}
                             submitClicked={this.answerSubmitClickedHandler}/>
+                        <CommentForm 
+                            isHidden={this.state.isCommentFormHidden}
+                            valueChanged={this.commentChangedHandler}
+                            value={this.state.comment}
+                            submitClicked={this.commentSubmitClickedHandler}/>
+                        <CommentList commentsRawData={this.state.commentList}/>
                         <h5 className="my-2">
                             {this.state.answerList.length} Answer{this.state.answerList.length>1?"s":""}
                         </h5>

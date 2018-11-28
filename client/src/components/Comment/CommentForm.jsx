@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default (props) => (
-    <div className="card bg-light">
+    <div className="card bg-light" hidden={props.isHidden}>
         <div className="card-body">
             <form className="form-inline" onSubmit={props.submitClicked}>
                 <div className="form-group mx-1">

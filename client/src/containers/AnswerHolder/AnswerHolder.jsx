@@ -4,6 +4,7 @@ import ControlBar from '../../components/ControlBar/ControlBar';
 import Control from '../../components/Control/Control'
 import Aux from '../../hoc/Aux/Aux';
 import CommentForm from '../../components/Comment/CommentForm';
+import CommentList from '../../components/Comment/CommentList';
 
 export default class AnswerHolder extends Component {
 
@@ -11,7 +12,8 @@ export default class AnswerHolder extends Component {
       super(props)
     
       this.state = {
-         comment: ""
+         comment: "",
+         commentList: []
       }
     }
     
@@ -33,7 +35,19 @@ export default class AnswerHolder extends Component {
 
     submitCommentClicked = (e) => {
         e.preventDefault();
-        alert(`Submitting comment: ${e.target["comment"].value}`);
+        let value = e.target["comment"].value;
+        this.setState(prevState => {
+            return {
+                commentList: [...prevState.commentList, {
+                    id: prevState.commentList.length + 1,
+                    user: {
+                        username: this.props.username
+                    },
+                    commentInfo: new Date(),
+                    comment: value
+                }]
+            }
+        })
     } 
 
     render() {
@@ -74,6 +88,7 @@ export default class AnswerHolder extends Component {
                         value={this.state.comment}
                         valueChanged={this.commentChanged}
                         submitClicked={this.submitCommentClicked}/>
+                    <CommentList commentsRawData={this.state.commentList}/>
                 </div>
             </div>
         )
