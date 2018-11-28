@@ -40,7 +40,10 @@ export default class AnswerHolder extends Component {
         return (
             <div className="card border-left-0 border-right-0 border-bottom-0 rounded-0">
                 <div className="card-body">
-                    <AnswerView />
+                    <AnswerView 
+                        username={this.props.username}
+                        answer={this.props.answer}
+                        answerInfo={this.props.answerInfo}/>
                     <ControlBar
                         left={(
                             <Aux>

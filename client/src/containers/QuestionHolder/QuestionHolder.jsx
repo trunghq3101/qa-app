@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import QuestionView from '../../components/Question/QuestionView';
 import AnswerForm from '../../components/Answer/AnswerForm';
-import AnswerHolder from '../AnswerHolder/AnswerHolder';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import Aux from '../../hoc/Aux/Aux';
 import FullControl from '../../components/Controls/FullControl/Control';
+import AnswerList from '../../components/Answer/AnswerList';
+
+const user = {
+    username: "Trung Hoang"
+}
 
 export default class QuestionHolder extends Component {
 
@@ -13,7 +17,8 @@ export default class QuestionHolder extends Component {
     
       this.state = {
          isAnswerFormHidden: true,
-         answer: ""
+         answer: "",
+         answerList: []
       }
     }
     
@@ -45,7 +50,17 @@ export default class QuestionHolder extends Component {
 
     answerSubmitClickedHandler = (e) => {
         e.preventDefault();
-        alert(`Submitting answer:  ${e.target["answer"].value}`);
+        const value = e.target["answer"].value
+        this.setState( prevState => {
+            return {
+                answerList: [...prevState.answerList, {
+                    id: prevState.answerList.length + 1,
+                    user: user,
+                    answer: value,
+                    answerInfo: new Date()
+                }]
+            }
+        })
     }
 
     render() {
@@ -96,9 +111,10 @@ export default class QuestionHolder extends Component {
                             valueChanged={this.answerChangedHandler}
                             value={this.state.answer}
                             submitClicked={this.answerSubmitClickedHandler}/>
-                        <h5 className="my-2">15 Answers</h5>
-                        <AnswerHolder />
-                        <AnswerHolder />
+                        <h5 className="my-2">
+                            {this.state.answerList.length} Answer{this.state.answerList.length>1?"s":""}
+                        </h5>
+                        <AnswerList answersRawData={this.state.answerList}/>
                     </div>
                 </div>
             </div>
