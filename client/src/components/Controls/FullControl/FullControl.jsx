@@ -16,7 +16,10 @@ export default (props) => {
     switch (props.ctrlType) {
         case "button":
             ctrlView = (
-                <button type="button" className="btn btn-light mx-1">
+                <button
+                    type="button"
+                    className="btn btn-light mx-1"
+                    onClick={props.clicked}>
                     <span>
                         <FontAwesomeIcon icon={icons[props.ctrlName]} /> {props.ctrlName}
                     </span>
@@ -26,13 +29,16 @@ export default (props) => {
 
         case "text":
             ctrlView = (
-                <span>{props.ctrlName}</span>
+                <span onClick={props.clicked}>{props.ctrlName}</span>
             )
             break;
-        
+
         case "icon":
             ctrlView = (
-                <button type="button" className="btn btn-light mx-1">
+                <button
+                    type="button"
+                    className="btn btn-light mx-1"
+                    onClick={props.clicked}>
                     <FontAwesomeIcon icon={icons[props.ctrlName]} />
                 </button>
             )

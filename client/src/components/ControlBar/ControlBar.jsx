@@ -8,18 +8,29 @@ export default (props) => {
 
     const mainControlsFull = Object.keys(props.mainControls)
         .map(ctrlKey => (
-            <FullControl key={ctrlKey} ctrlType="button" ctrlName={ctrlKey} />
+            <FullControl 
+                key={ctrlKey} 
+                ctrlType="button" 
+                ctrlName={ctrlKey} 
+                clicked={props.mainControls[ctrlKey]}/>
         ))
 
     const subControlsFull = Object.keys(props.subControls)
         .map(ctrlKey => (
-            <FullControl key={ctrlKey} ctrlType="icon" ctrlName={ctrlKey} />
+            <FullControl 
+                key={ctrlKey} 
+                ctrlType="icon" 
+                ctrlName={ctrlKey} 
+                clicked={props.subControls[ctrlKey]}/>
         ))
 
     const subControlsText = Object.keys(props.subControls)
         .map(ctrlKey => (
             <div key={ctrlKey} className="dropdown-item">
-                <FullControl ctrlType="text" ctrlName={ctrlKey}/>
+                <FullControl 
+                    ctrlType="text" 
+                    ctrlName={ctrlKey}
+                    clicked={props.subControls[ctrlKey]}/>
             </div>
         ))
 
