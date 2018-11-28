@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faBell, faComment, faShare, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import Aux from '../../../hoc/Aux/Aux';
+import Aux from '../../hoc/Aux/Aux';
 
 export default (props) => {
 
@@ -31,7 +31,9 @@ export default (props) => {
 
         case "text":
             ctrlView = (
-                <span onClick={props.clicked}>{props.ctrlName}</span>
+                <div className="dropdown-item">
+                    <span onClick={props.clicked}>{props.ctrlName}</span>
+                </div>
             )
             break;
 

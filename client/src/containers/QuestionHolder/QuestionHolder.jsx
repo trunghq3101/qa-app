@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import QuestionView from '../../components/Question/QuestionView';
-import QuestionControlBar from '../../components/ControlBar/QuestionControlBar';
 import AnswerForm from '../../components/Answer/AnswerForm';
 import AnswerHolder from '../AnswerHolder/AnswerHolder';
+import ControlBar from '../../components/ControlBar/ControlBar';
+import Aux from '../../hoc/Aux/Aux';
+import FullControl from '../../components/Controls/FullControl/Control';
 
 export default class QuestionHolder extends Component {
 
@@ -52,15 +54,43 @@ export default class QuestionHolder extends Component {
                 <div className="col-12 col-sm-10">
                     <div className="card px-3 py-2">
                         <QuestionView />
-                        <QuestionControlBar 
-                            mainControls={{
-                                Answer: this.answerClickedHandler,
-                                Follow: this.followClickedHandler
-                            }}
-                            subControls={{
-                                Comment: this.commentClickedHandler,
-                                Share: this.shareClickedHandler
-                            }}/>
+                        <ControlBar 
+                            left={(
+                                <Aux>
+                                    <FullControl
+                                        ctrlType="button"
+                                        ctrlName="Answer"
+                                        clicked={this.answerClickedHandler}/>
+                                    <FullControl
+                                        ctrlType="button"
+                                        ctrlName="Follow"
+                                        clicked={this.followClickedHandler}/>
+                                </Aux>
+                            )}
+                            rightDesktop={(
+                                <Aux>
+                                    <FullControl
+                                        ctrlType="icon"
+                                        ctrlName="Comment"
+                                        clicked={this.commentClickedHandler}/>
+                                    <FullControl
+                                        ctrlType="icon"
+                                        ctrlName="Share"
+                                        clicked={this.shareClickedHandler}/>
+                                </Aux>
+                            )}
+                            moreMobile={(
+                                <Aux>
+                                    <FullControl
+                                        ctrlType="text"
+                                        ctrlName="Comment"
+                                        clicked={this.commentClickedHandler}/>
+                                    <FullControl
+                                        ctrlType="text"
+                                        ctrlName="Share"
+                                        clicked={this.shareClickedHandler}/>
+                                </Aux>
+                            )}/>
                         <AnswerForm 
                             isHidden={this.state.isAnswerFormHidden}
                             valueChanged={this.answerChangedHandler}
