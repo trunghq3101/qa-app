@@ -5,8 +5,6 @@ import Aux from '../Aux/Aux';
 export default (props) => (
     <Aux>
         <Toolbar />
-        <main className="container">
-            {props.children}
-        </main>
+        {props.children}
     </Aux>
 )

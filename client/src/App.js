@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Aux from './hoc/Aux/Aux';
-import QuestionHolder from './containers/QuestionHolder/QuestionHolder';
 import Layout from './hoc/Layout/Layout';
+import Home from './containers/Home/Home';
 
 class App extends Component {
 
@@ -9,7 +9,7 @@ class App extends Component {
         return (
             <Aux>
                 <Layout>
-                    <QuestionHolder />
+                    <Home />
                 </Layout>
             </Aux>
         );
