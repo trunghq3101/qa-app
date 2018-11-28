@@ -3,8 +3,14 @@ import Aux from '../../hoc/Aux/Aux';
 
 export default (props) => (
     <Aux>
-        <h5><span>Avatar </span>John Doe</h5>
-        <p>You should first try with a small motorbike and drive for some rounds around your neighborhood</p>
-        <p><small>5 minutes ago</small></p>
+        <div>
+            <div>
+                <strong>{props.username}</strong>
+            </div>
+            <div>
+                <small className="text-muted">Answered at  {props.answerInfo}</small>
+            </div>
+        </div>
+        <p className="my-1 mx-2">{props.answer}</p>
     </Aux>
 )
