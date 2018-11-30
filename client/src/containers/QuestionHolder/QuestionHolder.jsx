@@ -101,7 +101,7 @@ export default class QuestionHolder extends Component {
                 <QuestionView />
                 <ControlBar
                     left={(
-                        <Aux>
+                        <React.Fragment>
                             <Control
                                 ctrlType="button"
                                 ctrlName="Answer"
@@ -110,10 +110,10 @@ export default class QuestionHolder extends Component {
                                 ctrlType="button"
                                 ctrlName="Follow"
                                 clicked={this.followClickedHandler} />
-                        </Aux>
+                        </React.Fragment>
                     )}
                     rightDesktop={(
-                        <Aux>
+                        <React.Fragment>
                             <Control
                                 ctrlType="icon"
                                 ctrlName="Comment"
@@ -122,10 +122,10 @@ export default class QuestionHolder extends Component {
                                 ctrlType="icon"
                                 ctrlName="Share"
                                 clicked={this.shareClickedHandler} />
-                        </Aux>
+                        </React.Fragment>
                     )}
                     moreMobile={(
-                        <Aux>
+                        <React.Fragment>
                             <Control
                                 ctrlType="text"
                                 ctrlName="Comment"
@@ -134,7 +134,7 @@ export default class QuestionHolder extends Component {
                                 ctrlType="text"
                                 ctrlName="Share"
                                 clicked={this.shareClickedHandler} />
-                        </Aux>
+                        </React.Fragment>
                     )} />
                 <AnswerForm
                     isHidden={this.state.isAnswerFormHidden}

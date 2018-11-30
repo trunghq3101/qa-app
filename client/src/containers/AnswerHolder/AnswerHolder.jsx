@@ -60,7 +60,7 @@ export default class AnswerHolder extends Component {
                         answerInfo={this.props.answerInfo}/>
                     <ControlBar
                         left={(
-                            <Aux>
+                            <React.Fragment>
                                 <Control
                                     ctrlType="button"
                                     ctrlName="Upvote"
@@ -69,7 +69,7 @@ export default class AnswerHolder extends Component {
                                     ctrlType="button"
                                     ctrlName="Share"
                                     clicked={this.shareClickedHandler} />
-                            </Aux>
+                            </React.Fragment>
                         )}
                         rightDesktop={(
                             <Control

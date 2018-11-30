@@ -52,8 +52,8 @@ export default (props) => {
     }
 
     return (
-        <Aux>
+        <React.Fragment>
             {ctrlView}
-        </Aux>
+        </React.Fragment>
     )
 }

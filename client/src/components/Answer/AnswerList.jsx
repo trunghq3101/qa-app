@@ -13,7 +13,7 @@ export default (props) => {
         }
     })
     return (
-        <Aux>
+        <React.Fragment>
             {transformedAnswers.map(item => (
                 <AnswerHolder
                     key={item.id}
@@ -21,6 +21,6 @@ export default (props) => {
                     answer={item.answer}
                     answerInfo={item.answerInfo} />
             ))}
-        </Aux>
+        </React.Fragment>
     )
 }

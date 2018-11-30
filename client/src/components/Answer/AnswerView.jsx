@@ -2,7 +2,7 @@ import React from 'react'
 import Aux from '../../hoc/Aux/Aux';
 
 export default (props) => (
-    <Aux>
+    <React.Fragment>
         <div>
             <div>
                 <strong>{props.username}</strong>
@@ -12,5 +12,5 @@ export default (props) => (
             </div>
         </div>
         <p className="my-1 mx-2">{props.answer}</p>
-    </Aux>
+    </React.Fragment>
 )

@@ -3,7 +3,6 @@ import QuestionForm from '../../components/Question/QuestionForm';
 import QuestionList from '../../components/Question/QuestionList';
 import axios from '../../Axios-userData'
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
-import Modal from '../../components/UI/Modal/Modal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Home extends Component {
