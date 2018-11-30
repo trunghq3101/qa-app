@@ -1,0 +1,28 @@
+.Modal {
+    box-sizing: border-box;
+    position: relative;
+    background-color: white;
+    background-clip: padding-box;
+    width: auto;
+    margin: auto 0.5rem;
+    justify-content: center;
+    border-radius: .3rem;
+    display: flex;
+    padding: 1rem;
+}
+
+@media (min-width: 576px) {
+    .Modal { 
+        box-sizing: border-box;
+        position: relative;
+        background-color: white;
+        background-clip: padding-box;
+        align-self: center;
+        margin: 1.75rem;
+        min-width: 500px;
+        justify-content: center;
+        border-radius: .3rem;
+        display: flex;
+        padding: 1rem;
+    }
+}

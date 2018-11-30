@@ -6,7 +6,7 @@ export default (props) => {
         return {
             id: item.id,
             url: item.url,
-            numAnswers: item.answers.length,
+            numAnswers: item.answers.length ? item.answers.length : 0,
             questionInfo: item.questionInfo.toLocaleString(),
             question: item.question
         }
