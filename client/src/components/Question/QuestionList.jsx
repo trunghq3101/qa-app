@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './Question.module.css'
+import { Link } from 'react-router-dom'
 
 export default (props) => {
     const transformedQuestions = props.questionsRawData.map(item => {
@@ -16,27 +17,23 @@ export default (props) => {
             {transformedQuestions.map(item => (
                 <div className="card my-2" key={item.id}>
                     <div className="card-body">
-                        <a 
-                            href={item.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer">
+                    
+                        <Link to={item.url}>
                             <h4>
                                 {item.question}
                             </h4>
-                        </a>
+                        </Link>
+
                         <span className="text-muted">
-                            <a
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-muted">
+                            <Link to={item.url} className="text-muted">
                                 <strong >
                                     {item.numAnswers === 0 ?
                                         "No Answer Yet" :
                                         `${item.numAnswers} Answers`}
                                 </strong>
-                            </a> |  <small>Posted at {item.questionInfo}</small>
+                            </Link> |  <small>Posted at {item.questionInfo}</small>
                         </span>
+
                     </div>
                 </div>
             ))}

@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import QuestionHolder from './containers/QuestionHolder/QuestionHolder'
 
 class App extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <BrowserRouter>
                 <Layout>
-                    <Home />
+                    <Switch>
+                        <Route path="/" exact component={Home}/>
+                        <Route path="/q/:id" exact component={QuestionHolder}/>
+                        <Route render={() => (
+                            <div className="mt-5">
+                                <h1>Page not found</h1>
+                            </div>
+                            )}/>
+                    </Switch>
                 </Layout>
-            </React.Fragment>
+            </BrowserRouter>
         );
     }
 }

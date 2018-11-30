@@ -72,7 +72,7 @@ class Home extends Component {
 
     render() {
         let questionList = <Spinner />;
-        if (this.state.questionsFeed) questionList = <QuestionList questionsRawData={this.state.questionsFeed} />
+        if (this.state.questionsFeed.length) questionList = <QuestionList questionsRawData={this.state.questionsFeed} />
         return (
             <main className="bg-light container-fluid pt-4">
                 <div className="row justify-content-center pt-5">

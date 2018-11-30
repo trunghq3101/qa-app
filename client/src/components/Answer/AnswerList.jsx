@@ -1,6 +1,5 @@
 import React from 'react'
 import AnswerHolder from '../../containers/AnswerHolder/AnswerHolder';
-import Aux from '../../hoc/Aux/Aux';
 
 export default (props) => {
 

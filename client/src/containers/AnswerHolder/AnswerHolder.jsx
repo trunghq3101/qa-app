@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import AnswerView from '../../components/Answer/AnswerView';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import Control from '../../components/Control/Control'
-import Aux from '../../hoc/Aux/Aux';
 import CommentForm from '../../components/Comment/CommentForm';
 import CommentList from '../../components/Comment/CommentList';
 

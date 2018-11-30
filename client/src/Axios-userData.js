@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
-const instance = Axios.create({
+const AxiosUserData = Axios.create({
     baseURL: "https://trung-qa-app.firebaseio.com/"
 })
 
-export default instance
+export default AxiosUserData
