@@ -3,11 +3,17 @@ const QuestionSchema = require('./Question')
 const questionService = {
 
     getQuestions: () => {
-        return QuestionSchema.find().exec();
+        return QuestionSchema
+            .find()
+            .populate("answers")
+            .exec();
     },
 
     getQuestion: (id) => {
-        return QuestionSchema.findById(id).exec();
+        return QuestionSchema
+            .findById(id)
+            .populate("answers")
+            .exec();
     },
 
     saveNewQuestion: (data) => {
