@@ -14,4 +14,6 @@ AnswerSchema.virtual("url")
         return `/a/${this._id}`;
     })
 
+AnswerSchema.set("toJSON", { getters: true });
+
 module.exports = mongoose.model("Answer", AnswerSchema);

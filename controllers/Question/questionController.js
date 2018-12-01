@@ -11,7 +11,7 @@ const questionController = {
                 })
             })
         } catch (error) {
-            next(error);
+            next(error)
         }
     },
 
@@ -31,7 +31,7 @@ const questionController = {
                 })
             })
         } catch (error) {
-            next(error);
+            next(error)
         }
     },
 
@@ -44,7 +44,30 @@ const questionController = {
                 })
             })
         } catch (error) {
-            next(error);
+            next(error)
+        }
+    },
+
+    updateQuestion: (req, res, next) => {
+        try {
+            console.log(req.body.id);
+            QuestionSchema.findByIdAndUpdate( req.body.id, req.body.update, (err, result) => {
+                if (err) {
+                    next(err);
+                } else if (result) {
+                    res.json({
+                        ok: true,
+                        result: result
+                    })
+                } else {
+                    res.json({
+                        ok: false,
+                        result: "Can't update"
+                    })
+                }
+            })
+        } catch (error) {
+            next(error)
         }
     }
 }
