@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import QuestionView from '../../components/Question/QuestionView';
-import AnswerForm from '../../components/Answer/AnswerForm';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import AnswerList from '../../components/Answer/AnswerList';
 import CommentForm from '../../components/Comment/CommentForm';
@@ -9,6 +8,7 @@ import Control from '../../components/Control/Control';
 import AxiosUserData from '../../Axios-userData';
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import AnswerWithHandler from '../../hoc/Control/AnswerWithHandler';
 
 const user = {
     username: "Trung Hoang"
@@ -52,14 +52,6 @@ class QuestionHolder extends Component {
             })
     }
 
-    answerClickedHandler = () => {
-        this.setState(prevState => {
-            return {
-                isAnswerFormHidden: !prevState.isAnswerFormHidden
-            }
-        })
-    }
-
     followClickedHandler = () => {
         alert("Get notifications when have a new answer");
     }
@@ -76,33 +68,10 @@ class QuestionHolder extends Component {
         alert("Share to others");
     }
 
-    answerChangedHandler = (e) => {
-        this.setState({
-            answer: e.target.value
-        })
-    }
-
     commentChangedHandler = (e) => {
         this.setState({
             comment: e.target.value
         })
-    }
-
-    answerSubmitClickedHandler = (e) => {
-        e.preventDefault();
-        const answer = {
-            answer: e.target["answer"].value,
-            createdTime: new Date(),
-            question: this.props.match.params.id
-        }
-        AxiosUserData.post("/a/new", answer)
-            .then(res => {
-                this.getQuestionData();
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        this.answerClickedHandler();
     }
 
     commentSubmitClickedHandler = (e) => {
@@ -130,16 +99,19 @@ class QuestionHolder extends Component {
         } else if (!this.state.question) {
             questionHolder = <h2>No question found!</h2>
         } else {
+            
+            let AnswerButton = AnswerWithHandler(
+                Control, "button", "Answer", 
+                this.props.match.params.id, 
+                this.getQuestionData);
+
             questionHolder = (
                 <React.Fragment>
                     <QuestionView data={this.state.question}/>
                     <ControlBar
                         left={(
                             <React.Fragment>
-                                <Control
-                                    ctrlType="button"
-                                    ctrlName="Answer"
-                                    clicked={this.answerClickedHandler} />
+                                <AnswerButton/>
                                 <Control
                                     ctrlType="button"
                                     ctrlName="Follow"
@@ -170,11 +142,7 @@ class QuestionHolder extends Component {
                                     clicked={this.shareClickedHandler} />
                             </React.Fragment>
                         )} />
-                    <AnswerForm
-                        isHidden={this.state.isAnswerFormHidden}
-                        valueChanged={this.answerChangedHandler}
-                        value={this.state.answer}
-                        submitClicked={this.answerSubmitClickedHandler} />
+                    
                     <CommentForm
                         isHidden={this.state.isCommentFormHidden}
                         valueChanged={this.commentChangedHandler}
