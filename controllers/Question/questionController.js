@@ -1,15 +1,17 @@
 const QuestionSchema = require('./Question')
+const questionService = require('./questionService')
 
 const questionController = {
 
     getQuestions: (req, res, next) => {
         try {
-            QuestionSchema.find((err, result) => {
-                err ? next(err) : res.json({
+            questionService.getQuestions()
+                .then(result => res.json({
                     ok: true,
                     result: result
-                })
-            })
+                }))
+                .catch(err => next(err));
+            
         } catch (error) {
             next(error)
         }
