@@ -3,7 +3,7 @@ import classes from './Modal.module.css'
 import Backdrop from '../Backdrop/Backdrop';
 
 export default (props) => (
-    <Backdrop show={props.show} clicked={props.modalClosed}>
+    <React.Fragment>
         <div
             className={classes.Modal}
             style={
@@ -14,5 +14,6 @@ export default (props) => (
             }>
             {props.children}
         </div>
-    </Backdrop>
+        <Backdrop show={props.show} clicked={props.modalClosed}/>
+    </React.Fragment>
 )
