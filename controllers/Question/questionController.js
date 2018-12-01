@@ -25,9 +25,23 @@ const questionController = {
                 comments: req.body.comments
             })
             savingQuestion.save((err, result) => {
-                if (err) { next(err) } else {
-                    res.json(result);
-                }
+                err ? next(err) : res.json({
+                    ok: true,
+                    result: result
+                })
+            })
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    getQuestion: (req, res, next) => {
+        try {
+            QuestionSchema.findById( req.params.id, (err, result) => {
+                err ? next(err) : res.json({
+                    ok: true,
+                    result: result
+                })
             })
         } catch (error) {
             next(error);

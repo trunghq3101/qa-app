@@ -1,3 +1,6 @@
+/* #TODO: 
+    - Goi API lay questions theo mot so option dat truoc
+*/
 import React, { Component } from 'react'
 import QuestionForm from '../../components/Question/QuestionForm';
 import QuestionList from '../../components/Question/QuestionList';
@@ -15,6 +18,10 @@ class Home extends Component {
             loading: false,
             loadingFeed: false
         }
+    }
+
+    componentDidMount() {
+        this.getQuestions();
     }
 
     submitQuestionClickedHandler = (e) => {
@@ -42,10 +49,6 @@ class Home extends Component {
 
     questionChangedHandler = (e) => {
         this.setState({ question: e.target.value });
-    }
-
-    componentDidMount() {
-        this.getQuestions();
     }
 
     getQuestions = () => {
