@@ -1,5 +1,5 @@
 const AnswerSchema = require('./Answer');
-const questionController = require('../Question/questionController');
+const questionService = require('../Question/questionService');
 
 const answerController = {
 
@@ -18,7 +18,7 @@ const answerController = {
         }
     },
 
-    saveNewAnswer: (req, res, next) => {
+    saveNewAnswer: async (req, res, next) => {
         try {
             let savingAnswer = new AnswerSchema({
                 answer: req.body.answer,
@@ -27,12 +27,18 @@ const answerController = {
                 comments: req.body.comments,
                 user: req.body.user
             })
-            savingAnswer.save((err, result) => {
-                err ? next(err) : res.json({
-                    ok: true,
-                    result: result
-                })
+
+            let newAnswer = await savingAnswer.save();
+            await questionService.updateQuestion(req.body.question, {
+                $push: {
+                    answers: newAnswer._id
+                }
+            });
+            res.json({
+                ok: true,
+                result: newAnswer
             })
+
         } catch (error) {
             next(error)
         }

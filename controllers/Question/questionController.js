@@ -3,15 +3,13 @@ const questionService = require('./questionService')
 
 const questionController = {
 
-    getQuestions: (req, res, next) => {
+    getQuestions: async (req, res, next) => {
         try {
-            questionService.getQuestions()
-                .then(result => res.json({
-                    ok: true,
-                    result: result
-                }))
-                .catch(err => next(err));
-            
+            let questions = await questionService.getQuestions();
+            res.json({
+                ok: true,
+                result: questions
+            })
         } catch (error) {
             next(error)
         }
@@ -52,22 +50,12 @@ const questionController = {
 
     updateQuestion: (req, res, next) => {
         try {
-            console.log(req.body.id);
-            QuestionSchema.findByIdAndUpdate( req.body.id, req.body.update, (err, result) => {
-                if (err) {
-                    next(err);
-                } else if (result) {
-                    res.json({
-                        ok: true,
-                        result: result
-                    })
-                } else {
-                    res.json({
-                        ok: false,
-                        result: "Can't update"
-                    })
-                }
-            })
+            questionService.updateQuestion(req.body.id, req.body.update)
+                .then(result => res.json({
+                    ok: true,
+                    result: result
+                }))
+                .catch(err => next(err))
         } catch (error) {
             next(error)
         }
