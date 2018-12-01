@@ -8,7 +8,7 @@ import Control from '../../components/Control/Control';
 import AxiosUserData from '../../Axios-userData';
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import AnswerWithHandler from '../../hoc/Control/AnswerWithHandler';
+import AnswerWithHandler from '../../hoc/ControlWithHandler/AnswerWithHandler';
 
 const user = {
     username: "Trung Hoang"
@@ -150,7 +150,7 @@ class QuestionHolder extends Component {
                         submitClicked={this.commentSubmitClickedHandler} />
                     <CommentList commentsRawData={this.state.commentList} />
                     <h5 className="my-2">
-                        {this.state.answerList.length} Answer{this.state.answerList.length > 1 ? "s" : ""}
+                        {this.state.question.answers.length} Answer{this.state.question.answers.length > 1 ? "s" : ""}
                     </h5>
                     <AnswerList answers={this.state.question.answers} />
                 </React.Fragment>
