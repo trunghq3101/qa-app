@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const AxiosUserData = Axios.create({
-    baseURL: "https://trung-qa-app.firebaseio.com/"
+    baseURL: "/api"
 })
 
 export default AxiosUserData

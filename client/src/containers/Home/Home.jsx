@@ -12,7 +12,8 @@ class Home extends Component {
         this.state = {
             questionsFeed: [],
             question: "",
-            loading: false
+            loading: false,
+            loadingFeed: false
         }
     }
 
@@ -20,17 +21,18 @@ class Home extends Component {
         e.preventDefault();
         const question = {
             question: e.target["question"].value,
-            questionInfo: new Date(),
-            user: {
-                username: "Trung Hoang"
-            },
-            answers: true
+            createdTime: new Date(),
+            answers: []
         }
         this.setState({ loading: true });
-        axios.post("/questions.json", question)
+        axios.post("/q/new", question)
             .then(res => {
                 this.setState({ loading: false });
-                this.getQuestions();
+                if (res.data.ok) {
+                    this.getQuestions();
+                } else {
+                    throw res.data.error;
+                }
             })
             .catch(err => {
                 this.setState({ loading: false });
@@ -47,32 +49,26 @@ class Home extends Component {
     }
 
     getQuestions = () => {
-        axios.get(`/questions.json`)
+        this.setState({ loadingFeed: true });
+        axios.get(`/q/all`)
             .then(res => {
-                if (res.data) {
-                    this.setState({
-                        questionsFeed: Object.keys(res.data)
-                            .slice(0).reverse()
-                            .map(qKey => {
-                                return {
-                                    id: qKey,
-                                    url: "/q/"+qKey,
-                                    answers: res.data[qKey].answers,
-                                    question: res.data[qKey].question,
-                                    questionInfo: res.data[qKey].questionInfo
-                                }
-                            })
-                    })
-                }  
+                this.setState({ loadingFeed: false });
+                if (res.data.ok) {
+                    this.setState({ questionsFeed: res.data.result })
+                } else {
+                    throw res.data.error;
+                }
             })
             .catch(err => {
+                this.setState({ loadingFeed: false })
                 console.log(err)
             })
     }
 
     render() {
-        let questionList = <Spinner />;
-        if (this.state.questionsFeed.length) questionList = <QuestionList questionsRawData={this.state.questionsFeed} />
+        let questionList = this.state.loadingFeed ?
+            <Spinner /> :
+            <QuestionList questions={this.state.questionsFeed} />;
         return (
             <main className="bg-light container-fluid pt-4">
                 <div className="row justify-content-center pt-5">

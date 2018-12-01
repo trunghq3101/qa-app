@@ -1,11 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const questionController = require('../controllers/Question/questionController');
 
-router.get('/welcome', function(req, res, next) {
-    res.json({
-      "ok": true,
-      "result": "Welcome to free Q&A community!"
-    })
-});
+router.get('/q/all', questionController.getQuestions);
+
+router.post('/q/new', questionController.saveNewQuestion);
 
 module.exports = router;
