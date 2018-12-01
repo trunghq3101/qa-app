@@ -1,4 +1,3 @@
-const AnswerSchema = require('./Answer');
 const questionService = require('../Question/questionService');
 const answerService = require('./answerService');
 
