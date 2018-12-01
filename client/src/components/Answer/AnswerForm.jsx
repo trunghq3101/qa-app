@@ -2,10 +2,9 @@ import React from 'react'
 
 export default (props) => (
     <form 
-        className="my-3 card bg-light" 
-        hidden={props.isHidden} 
+        className="my-3" 
         onSubmit={props.submitClicked}>
-        <div className="card-body">
+       
             <div className="form-group">
                 <p>
                     <strong>Trung Hoang</strong>
@@ -21,7 +20,6 @@ export default (props) => (
                 type="submit"
                 value="Submit"
                 className="btn btn-primary"/>
-        </div>
 
     </form>
 )
