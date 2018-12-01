@@ -28,6 +28,11 @@ QuestionSchema.virtual("numComments")
         return this.comments.length || 0
     })
 
+QuestionSchema.virtual("createdTimeToString")
+    .get(function() {
+        return this.createdTime.toDateString()
+    })
+
 QuestionSchema.set("toJSON", { getters: true });
 
 module.exports = mongoose.model("Question", QuestionSchema);

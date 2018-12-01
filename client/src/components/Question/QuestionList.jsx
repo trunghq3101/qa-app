@@ -23,7 +23,7 @@ export default (props) => {
                                         "No Answer Yet" :
                                         `${item.numAnswers} Answers`}
                                 </strong>
-                            </Link> |  <small>Posted at {item.createdTime}</small>
+                            </Link> |  <small>Posted at {item.createdTimeToString}</small>
                         </span>
 
                     </div>
