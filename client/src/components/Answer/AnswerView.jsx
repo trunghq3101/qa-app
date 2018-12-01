@@ -7,7 +7,7 @@ export default (props) => (
                 <strong>{props.username}</strong>
             </div>
             <div>
-                <small className="text-muted">Answered at  {props.answerInfo}</small>
+                <small className="text-muted">Answered at  {props.createdTime}</small>
             </div>
         </div>
         <p className="my-1 mx-2">{props.answer}</p>

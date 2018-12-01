@@ -14,6 +14,11 @@ AnswerSchema.virtual("url")
         return `/a/${this._id}`;
     })
 
+AnswerSchema.virtual("createdTimeToString")
+    .get(function() {
+        return this.createdTime.toDateString();
+    })
+
 AnswerSchema.set("toJSON", { getters: true });
 
 module.exports = mongoose.model("Answer", AnswerSchema);

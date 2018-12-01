@@ -90,17 +90,18 @@ class QuestionHolder extends Component {
 
     answerSubmitClickedHandler = (e) => {
         e.preventDefault();
-        const value = e.target["answer"].value;
-        this.setState(prevState => {
-            return {
-                answerList: [...prevState.answerList, {
-                    id: prevState.answerList.length + 1,
-                    user: user,
-                    answer: value,
-                    answerInfo: new Date()
-                }]
-            }
-        })
+        const answer = {
+            answer: e.target["answer"].value,
+            createdTime: new Date(),
+            question: this.props.match.params.id
+        }
+        AxiosUserData.post("/a/new", answer)
+            .then(res => {
+                this.getQuestionData();
+            })
+            .catch(err => {
+                console.log(err);
+            })
         this.answerClickedHandler();
     }
 
@@ -183,7 +184,7 @@ class QuestionHolder extends Component {
                     <h5 className="my-2">
                         {this.state.answerList.length} Answer{this.state.answerList.length > 1 ? "s" : ""}
                     </h5>
-                    <AnswerList answersRawData={this.state.answerList} />
+                    <AnswerList answers={this.state.question.answers} />
                 </React.Fragment>
             )
         }

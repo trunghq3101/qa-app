@@ -56,7 +56,7 @@ export default class AnswerHolder extends Component {
                     <AnswerView 
                         username={this.props.username}
                         answer={this.props.answer}
-                        answerInfo={this.props.answerInfo}/>
+                        createdTime={this.props.createdTime}/>
                     <ControlBar
                         left={(
                             <React.Fragment>
