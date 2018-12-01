@@ -1,4 +1,3 @@
-const QuestionSchema = require('./Question')
 const questionService = require('./questionService')
 
 const questionController = {
@@ -15,47 +14,37 @@ const questionController = {
         }
     },
 
-    saveNewQuestion: (req, res, next) => {
+    saveNewQuestion: async (req, res, next) => {
         try {
-            let savingQuestion = new QuestionSchema({
-                question: req.body.question,
-                createdTime: req.body.createdTime,
-                answers: req.body.answers,
-                user: req.body.user,
-                comments: req.body.comments
-            })
-            savingQuestion.save((err, result) => {
-                err ? next(err) : res.json({
-                    ok: true,
-                    result: result
-                })
+            let newQuestion = await questionService.saveNewQuestion(req.body);
+            res.json({
+                ok: true,
+                result: newQuestion
             })
         } catch (error) {
             next(error)
         }
     },
 
-    getQuestion: (req, res, next) => {
+    getQuestion: async (req, res, next) => {
         try {
-            QuestionSchema.findById( req.params.id, (err, result) => {
-                err ? next(err) : res.json({
-                    ok: true,
-                    result: result
-                })
+            let question = await questionService.getQuestion(req.params.id);
+            res.json({
+                ok: true,
+                result: question
             })
         } catch (error) {
             next(error)
         }
     },
 
-    updateQuestion: (req, res, next) => {
+    updateQuestion: async (req, res, next) => {
         try {
-            questionService.updateQuestion(req.body.id, req.body.update)
-                .then(result => res.json({
-                    ok: true,
-                    result: result
-                }))
-                .catch(err => next(err))
+            let updatedQuestion = await questionService.updateQuestion(req.body.id, req.body.update)
+            res.json({
+                ok: true,
+                result: updatedQuestion
+            })
         } catch (error) {
             next(error)
         }

@@ -6,8 +6,17 @@ const questionService = {
         return QuestionSchema.find().exec();
     },
 
+    getQuestion: (id) => {
+        return QuestionSchema.findById(id).exec();
+    },
+
+    saveNewQuestion: (data) => {
+        let savingQuestion = new QuestionSchema(data);
+        return savingQuestion.save();
+    },
+
     updateQuestion: (id, update) => {
-        return QuestionSchema.findByIdAndUpdate(id, update).exec();
+        return QuestionSchema.findByIdAndUpdate(id, update, { new: true }).exec();
     }
 }
 
