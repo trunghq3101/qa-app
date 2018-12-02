@@ -4,12 +4,12 @@ export default (props) => (
     <React.Fragment>
         <div>
             <div>
-                <strong>{props.username}</strong>
+                <strong>{props.data.username}</strong>
             </div>
             <div>
-                <small className="text-muted">Answered at  {props.createdTime}</small>
+                <small className="text-muted">Answered at  {props.data.createdTimeToString}</small>
             </div>
         </div>
-        <p className="my-1 mx-2">{props.answer}</p>
+        <p className="my-1 mx-2">{props.data.answer}</p>
     </React.Fragment>
 )

@@ -9,10 +9,7 @@ import AxiosUserData from '../../Axios-userData';
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import AnswerWithHandler from '../../hoc/ControlWithHandler/AnswerWithHandler';
-
-const user = {
-    username: "Trung Hoang"
-}
+import ContentNotFound from '../../components/UI/NotFound/ContentNotFound';
 
 class QuestionHolder extends Component {
 
@@ -20,12 +17,6 @@ class QuestionHolder extends Component {
         super(props)
 
         this.state = {
-            isAnswerFormHidden: true,
-            isCommentFormHidden: true,
-            answer: "",
-            answerList: [],
-            comment: "",
-            commentList: [],
             question: null,
             loadingQuestion: false
         }
@@ -36,7 +27,10 @@ class QuestionHolder extends Component {
     }
 
     getQuestionData = () => {
-        this.setState({ loadingQuestion: true });
+        this.setState({ 
+            loadingQuestion: true,
+            question: null
+        });
         AxiosUserData.get(`/q/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({ loadingQuestion: false });
@@ -56,38 +50,8 @@ class QuestionHolder extends Component {
         alert("Get notifications when have a new answer");
     }
 
-    commentClickedHandler = () => {
-        this.setState(prevState => {
-            return {
-                isCommentFormHidden: !prevState.isCommentFormHidden
-            }
-        })
-    }
-
     shareClickedHandler = () => {
         alert("Share to others");
-    }
-
-    commentChangedHandler = (e) => {
-        this.setState({
-            comment: e.target.value
-        })
-    }
-
-    commentSubmitClickedHandler = (e) => {
-        e.preventDefault();
-        const value = e.target["comment"].value;
-        this.setState(prevState => {
-            return {
-                commentList: [...prevState.commentList, {
-                    id: prevState.commentList.length + 1,
-                    user: user,
-                    commentInfo: new Date(),
-                    comment: value
-                }]
-            }
-        })
-        this.commentClickedHandler();
     }
 
     render() {
@@ -97,7 +61,7 @@ class QuestionHolder extends Component {
         if (this.state.loadingQuestion) {
             questionHolder = <Spinner />
         } else if (!this.state.question) {
-            questionHolder = <h2>No question found!</h2>
+            questionHolder = <ContentNotFound />
         } else {
             
             let AnswerButton = AnswerWithHandler(
@@ -143,16 +107,13 @@ class QuestionHolder extends Component {
                             </React.Fragment>
                         )} />
                     
-                    <CommentForm
-                        isHidden={this.state.isCommentFormHidden}
-                        valueChanged={this.commentChangedHandler}
-                        value={this.state.comment}
-                        submitClicked={this.commentSubmitClickedHandler} />
-                    <CommentList commentsRawData={this.state.commentList} />
+                    <CommentForm belongToId={this.state.question.id} commentSubmitted={this.getQuestionData}/>
+                    <CommentList commentListId={this.state.question.comments} />
+
                     <h5 className="my-2">
                         {this.state.question.answers.length} Answer{this.state.question.answers.length > 1 ? "s" : ""}
                     </h5>
-                    <AnswerList answers={this.state.question.answers} />
+                    <AnswerList answerListId={this.state.question.answers} />
                 </React.Fragment>
             )
         }

@@ -31,6 +31,18 @@ const answerController = {
         } catch (error) {
             next(error)
         }
+    },
+
+    getAnswer: async (req, res, next) => {
+        try {
+            let answer = await answerService.getAnswer(req.params.id)
+            res.json({
+                ok: true,
+                result: answer
+            })
+        } catch (error) {
+            next(error)
+        }
     }
 }
 

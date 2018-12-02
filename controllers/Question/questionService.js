@@ -5,14 +5,12 @@ const questionService = {
     getQuestions: () => {
         return QuestionSchema
             .find()
-            .populate("answers")
             .exec();
     },
 
     getQuestion: (id) => {
         return QuestionSchema
             .findById(id)
-            .populate("answers")
             .exec();
     },
 

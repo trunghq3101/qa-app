@@ -4,12 +4,8 @@ import AnswerHolder from '../../containers/AnswerHolder/AnswerHolder';
 export default (props) => {
     return (
         <React.Fragment>
-            {props.answers.map(item => (
-                <AnswerHolder
-                    key={item.id}
-                    username={item.username}
-                    answer={item.answer}
-                    createdTime={item.createdTimeToString} />
+            {props.answerListId.map(item => (
+                <AnswerHolder key={item} answerId={item} />
             ))}
         </React.Fragment>
     )

@@ -13,4 +13,11 @@ CommentSchema.virtual("url")
         return `/c/${this._id}`;
     })
 
-module.exports = mongoose.model("Comment", CommentSchema);
+CommentSchema.virtual("createdTimeToString")
+    .get(function () {
+        return this.createdTime.toDateString()
+    })
+
+CommentSchema.set("toJSON", { getters: true })
+
+module.exports = mongoose.model("Comment", CommentSchema)
