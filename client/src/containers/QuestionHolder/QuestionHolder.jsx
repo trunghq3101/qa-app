@@ -10,6 +10,9 @@ import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHand
 import Spinner from '../../components/UI/Spinner/Spinner';
 import AnswerWithHandler from '../../hoc/ControlWithHandler/AnswerWithHandler';
 import ContentNotFound from '../../components/UI/NotFound/ContentNotFound';
+import classes from './QuestionHolder.module.css'
+import BoxBottomBorder from '../../components/UI/Box/BoxBottomBorder/BoxBottomBorder';
+import CommentSection from '../../components/Comment/CommentSection/CommentSection';
 
 class QuestionHolder extends Component {
 
@@ -27,7 +30,7 @@ class QuestionHolder extends Component {
     }
 
     getQuestionData = () => {
-        this.setState({ 
+        this.setState({
             loadingQuestion: true,
             question: null
         });
@@ -63,69 +66,71 @@ class QuestionHolder extends Component {
         } else if (!this.state.question) {
             questionHolder = <ContentNotFound />
         } else {
-            
+
             let AnswerButton = AnswerWithHandler(
-                Control, "button", "Answer", 
-                this.props.match.params.id, 
+                Control, "button", "Answer",
+                this.props.match.params.id,
                 this.getQuestionData);
 
             questionHolder = (
                 <React.Fragment>
-                    <QuestionView data={this.state.question}/>
-                    <ControlBar
-                        left={(
-                            <React.Fragment>
-                                <AnswerButton/>
-                                <Control
-                                    ctrlType="button"
-                                    ctrlName="Follow"
-                                    clicked={this.followClickedHandler} />
-                            </React.Fragment>
-                        )}
-                        rightDesktop={(
-                            <React.Fragment>
-                                <Control
-                                    ctrlType="icon"
-                                    ctrlName="Comment"
-                                    clicked={this.commentClickedHandler} />
-                                <Control
-                                    ctrlType="icon"
-                                    ctrlName="Share"
-                                    clicked={this.shareClickedHandler} />
-                            </React.Fragment>
-                        )}
-                        moreMobile={(
-                            <React.Fragment>
-                                <Control
-                                    ctrlType="text"
-                                    ctrlName="Comment"
-                                    clicked={this.commentClickedHandler} />
-                                <Control
-                                    ctrlType="text"
-                                    ctrlName="Share"
-                                    clicked={this.shareClickedHandler} />
-                            </React.Fragment>
-                        )} />
-                    
-                    <CommentForm belongToId={this.state.question.id} commentSubmitted={this.getQuestionData}/>
-                    <CommentList commentListId={this.state.question.comments} />
+                    <BoxBottomBorder>
+                        <QuestionView data={this.state.question} />
+                        <ControlBar
+                            left={(
+                                <React.Fragment>
+                                    <AnswerButton />
+                                    <Control
+                                        ctrlType="button"
+                                        ctrlName="Follow"
+                                        clicked={this.followClickedHandler} />
+                                </React.Fragment>
+                            )}
+                            rightDesktop={(
+                                <React.Fragment>
+                                    <Control
+                                        ctrlType="icon"
+                                        ctrlName="Comment"
+                                        clicked={this.commentClickedHandler} />
+                                    <Control
+                                        ctrlType="icon"
+                                        ctrlName="Share"
+                                        clicked={this.shareClickedHandler} />
+                                </React.Fragment>
+                            )}
+                            moreMobile={(
+                                <React.Fragment>
+                                    <Control
+                                        ctrlType="text"
+                                        ctrlName="Comment"
+                                        clicked={this.commentClickedHandler} />
+                                    <Control
+                                        ctrlType="text"
+                                        ctrlName="Share"
+                                        clicked={this.shareClickedHandler} />
+                                </React.Fragment>
+                            )} />
 
-                    <h5 className="my-2">
-                        {this.state.question.answers.length} Answer{this.state.question.answers.length > 1 ? "s" : ""}
-                    </h5>
+                        <CommentSection>
+                            <CommentForm belongToId={this.state.question.id} commentSubmitted={this.getQuestionData} />
+                            <CommentList commentListId={this.state.question.comments} />
+                        </CommentSection>
+
+                    </BoxBottomBorder>
+
+                    <div className={`${classes.AnswerHeader}`}>
+                        <h4>{this.state.question.answers.length} Answer{this.state.question.answers.length > 1 ? "s" : ""}</h4>
+                    </div>
+
                     <AnswerList answerListId={this.state.question.answers} />
                 </React.Fragment>
             )
         }
 
         return (
-            <main className="bg-light container-fluid pt-4">
-                <div className="row justify-content-center pt-5">
-                    <div className="col-12 col-sm-10">
-                        <div className="card my-2 px-3 py-2">
-                            {questionHolder}
-                        </div>
-                    </div>
+            <main className={`container-fluid ${classes.QuestionPage}`}>
+                <div className={`col-12 col-sm-7 ${classes.MainSection}`}>
+                    {questionHolder}
                 </div>
             </main>
         )

@@ -33,30 +33,24 @@ export default class CommentForm extends Component {
 
     render() {
         return (
-            <div className="card bg-light">
-                <div className="card-body">
-                    <form className="form-inline" onSubmit={this.commentSubmittedHandler}>
-                        <div className="form-group mx-1">
-                            Avatar
-                        </div>
-                        <div className="form-group mx-2">
-                            <input
-                                type="text"
-                                placeholder="Add a comment..."
-                                value={this.state.comment}
-                                onChange={this.commentChangedHandler}
-                                name="comment"
-                                className="form-control" />
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="submit"
-                                value="Comment"
-                                className="btn btn-primary" />
-                        </div>
-                    </form>
+            <form className="d-inline-flex w-100" onSubmit={this.commentSubmittedHandler}>
+
+                <div className="form-group mr-2 flex-grow-1 ">
+                    <input
+                        type="text"
+                        placeholder="Add a comment..."
+                        value={this.state.comment}
+                        onChange={this.commentChangedHandler}
+                        name="comment"
+                        className="form-control" />
                 </div>
-            </div>
+                <div className="form-group">
+                    <input
+                        type="submit"
+                        value="Comment"
+                        className="btn btn-primary" />
+                </div>
+            </form>
         )
     }
 }

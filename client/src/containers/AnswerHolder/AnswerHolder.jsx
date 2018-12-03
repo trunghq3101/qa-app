@@ -6,6 +6,8 @@ import CommentForm from '../../components/Comment/CommentForm';
 import CommentList from '../../components/Comment/CommentList';
 import AxiosUserData from '../../Axios-userData';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import BoxBottomBorder from '../../components/UI/Box/BoxBottomBorder/BoxBottomBorder';
+import CommentSection from '../../components/Comment/CommentSection/CommentSection';
 
 export default class AnswerHolder extends Component {
 
@@ -50,7 +52,7 @@ export default class AnswerHolder extends Component {
     render() {
         let answerHolder = <Spinner />
         if (this.state.answer) answerHolder = (
-            <React.Fragment>
+            <BoxBottomBorder>
                 <AnswerView data={this.state.answer} />
                 <ControlBar
                     left={(
@@ -78,18 +80,14 @@ export default class AnswerHolder extends Component {
                             clicked={this.downvoteClickedHandler} />
                     )}
                 />
-                <CommentForm
-                    belongToId={this.state.answer.id}
-                    commentSubmitted={this.commentSubmittedHandler} />
-                <CommentList commentListId={this.state.answer.comments} />
-            </React.Fragment>
+                <CommentSection>
+                    <CommentForm
+                        belongToId={this.state.answer.id}
+                        commentSubmitted={this.commentSubmittedHandler} />
+                    <CommentList commentListId={this.state.answer.comments} />
+                </CommentSection>
+            </BoxBottomBorder>
         )
-        return (
-            <div className="card border-left-0 border-right-0 border-bottom-0 rounded-0">
-                <div className="card-body">
-                    {answerHolder}
-                </div>
-            </div>
-        )
+        return answerHolder
     }
 }

@@ -1,0 +1,10 @@
+.CommentSection {
+    border: 1px solid #efefef;
+    border-radius: 0.1rem;
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+.CommentSection:hover {
+    border-color: #eaeaea;
+}

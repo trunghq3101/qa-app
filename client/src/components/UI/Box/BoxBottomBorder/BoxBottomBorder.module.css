@@ -1,0 +1,12 @@
+.Box {
+    border-bottom: 6px solid #e6e6e6;
+    padding: 20px;
+    display: block;
+    margin: 0px auto;
+}
+
+@media (min-width: 600px) {
+    .Box {
+        border-bottom: 1px solid #e6e6e6;
+    }
+}

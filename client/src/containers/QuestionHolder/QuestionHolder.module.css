@@ -1,0 +1,36 @@
+.QuestionPage {
+    padding: 40px 0px 0px 0px;
+    display: block;
+}
+
+.MainSection {
+    padding: 0;
+    margin: 0px auto;
+    display: block;
+}
+
+.AnswerHeader {
+    display: block;
+    background-color: #e6e6e6;
+    padding: 10px 20px 10px 20px;
+}
+
+.AnswerHeader h4 {
+    
+    margin: 0px;
+}
+
+@media (min-width: 600px) {
+    .AnswerHeader {
+        background-color: rgba(0, 0, 0, 0);
+        border-bottom: 1px solid #e6e6e6;
+    }
+}
+
+@media (max-width: 599px) {
+    .AnswerHeader h4 {
+        text-transform: uppercase;
+        font-weight: lighter;
+        font-size: 0.75rem;
+    }
+}
