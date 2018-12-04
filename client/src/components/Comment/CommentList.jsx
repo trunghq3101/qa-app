@@ -1,11 +1,11 @@
 import React from 'react'
-import CommentHolder from '../../containers/CommentHolder/CommentHolder';
+import CommentDisplayController from '../../containers/Comment/CommentDisplayController/CommentDisplayController'
 
 export default (props) => {
 
     return props.commentListId.length ?
         props.commentListId.map(item => (
-            <CommentHolder key={item} commentId={item} />
+            <CommentDisplayController key={item} commentId={item} />
         )) : null
 
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import AxiosUserData from '../../Axios-userData';
-import CommentView from '../../components/Comment/CommentView';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import AxiosUserData from '../../../Axios-userData';
+import CommentView from '../../../components/Comment/CommentView';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
-export default class CommentHolder extends Component {
+export default class CommentDisplayController extends Component {
 
     state = {
         comment: null
@@ -28,13 +28,13 @@ export default class CommentHolder extends Component {
     }
 
     render() {
-        let commentHolder = <Spinner />
-        if (this.state.comment) commentHolder = (
+        let commentDisplayController = <Spinner />
+        if (this.state.comment) commentDisplayController = (
             <CommentView data={this.state.comment} />
         )
         return (
             <div>
-                {commentHolder}
+                {commentDisplayController}
             </div>
         )
     }

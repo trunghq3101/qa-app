@@ -7,6 +7,8 @@ import QuestionList from '../../components/Question/QuestionList';
 import axios from '../../Axios-userData'
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import classes from './Home.module.css';
+import ContentContainer from '../../components/UI/ContenContainer/ContentContainer';
 
 class Home extends Component {
     constructor(props) {
@@ -73,18 +75,16 @@ class Home extends Component {
             <Spinner /> :
             <QuestionList questions={this.state.questionsFeed} />;
         return (
-            <main className="bg-light container-fluid pt-4">
-                <div className="row justify-content-center pt-5">
-                    <div className="col-12 col-sm-10">
-                        {this.state.loading ? <Spinner /> : null}
-                        <QuestionForm
-                            submitClicked={this.submitQuestionClickedHandler}
-                            value={this.state.question}
-                            valueChanged={this.questionChangedHandler} />
-                        {questionList}
-                    </div>
-                </div>
-            </main>
+            <main className={classes.Home}>
+                <ContentContainer>
+                    {this.state.loading ? <Spinner /> : null}
+                    <QuestionForm
+                        submitClicked={this.submitQuestionClickedHandler}
+                        value={this.state.question}
+                        valueChanged={this.questionChangedHandler} />
+                    {questionList}
+                </ContentContainer>
+            </main >
         )
     }
 }

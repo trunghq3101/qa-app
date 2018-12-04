@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AnswerView from '../../components/Answer/AnswerView';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import Control from '../../components/Control/Control'
-import CommentForm from '../../components/Comment/CommentForm';
+import CommentForm from '../Comment/CommentForm/CommentForm';
 import CommentList from '../../components/Comment/CommentList';
 import AxiosUserData from '../../Axios-userData';
 import Spinner from '../../components/UI/Spinner/Spinner';

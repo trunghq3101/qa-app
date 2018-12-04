@@ -1,0 +1,28 @@
+.Toolbar {
+    background-color: #bf322d;
+    position: fixed;
+    width: 100%;
+    padding: 10px 15px;
+    z-index: 1000;
+}
+
+.LogoDesktop {
+    display: none;
+}
+
+.LogoMobile {
+    display: block;
+}
+
+@media (min-width: 600px) {
+    .Toolbar {
+        background-color: white;
+        box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+    .LogoDesktop {
+        display: block;
+    }
+    .LogoMobile {
+        display: none;
+    }
+}

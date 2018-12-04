@@ -2,8 +2,8 @@ import React from 'react'
 import Toolbar from '../../components/Toolbar/Toolbar';
 
 export default (props) => (
-    <React.Fragment>
+    <div className="container-fluid px-0">
         <Toolbar />
         {props.children}
-    </React.Fragment>
+    </div>
 )

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import QuestionView from '../../components/Question/QuestionView';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import AnswerList from '../../components/Answer/AnswerList';
-import CommentForm from '../../components/Comment/CommentForm';
+import CommentForm from '../Comment/CommentForm/CommentForm';
 import CommentList from '../../components/Comment/CommentList';
 import Control from '../../components/Control/Control';
 import AxiosUserData from '../../Axios-userData';
@@ -13,6 +13,7 @@ import ContentNotFound from '../../components/UI/NotFound/ContentNotFound';
 import classes from './QuestionHolder.module.css'
 import BoxBottomBorder from '../../components/UI/Box/BoxBottomBorder/BoxBottomBorder';
 import CommentSection from '../../components/Comment/CommentSection/CommentSection';
+import ContentContainer from '../../components/UI/ContenContainer/ContentContainer';
 
 class QuestionHolder extends Component {
 
@@ -128,11 +129,11 @@ class QuestionHolder extends Component {
         }
 
         return (
-            <main className={`container-fluid ${classes.QuestionPage}`}>
-                <div className={`col-12 col-sm-7 ${classes.MainSection}`}>
+            <main className={classes.QuestionPage}>
+                <ContentContainer>
                     {questionHolder}
-                </div>
-            </main>
+                </ContentContainer>
+            </main >
         )
     }
 }
