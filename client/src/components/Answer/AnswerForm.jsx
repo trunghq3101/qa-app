@@ -1,4 +1,5 @@
 import React from 'react'
+import Input from '../UI/Input/Input';
 
 export default (props) => (
     <form 
@@ -9,12 +10,11 @@ export default (props) => (
                 <p>
                     <strong>Trung Hoang</strong>
                 </p>
-                <textarea
-                    className="form-control"
-                    placeholder="Write your answer"
+                <Input 
+                    inputType="answer"
+                    changed={props.valueChanged}
                     value={props.value}
-                    name="answer"
-                    onChange={props.valueChanged}/>
+                    placeholder="Write your answer"/>
             </div>
             <input 
                 type="submit"

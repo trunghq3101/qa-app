@@ -7,7 +7,7 @@ export default (props) => {
 
     switch (props.inputType) {
         case "question":
-            
+
             InputView = <TextareaAutoResize
                 name="question"
                 onChange={props.changed}
@@ -17,11 +17,12 @@ export default (props) => {
             break;
 
         case "answer":
-            InputView = <textarea
+            InputView = <TextareaAutoResize
                 name="answer"
                 onChange={props.changed}
                 value={props.value}
-                placeholder={props.placeholder} />
+                placeholder={props.placeholder}
+                className={`${classes.Input} ${classes.Answer}`} />
             break;
 
         default:
