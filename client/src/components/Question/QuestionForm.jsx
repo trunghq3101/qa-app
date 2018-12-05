@@ -10,7 +10,7 @@ export default (props) => (
                         inputType="question" 
                         value={props.value} 
                         changed={props.valueChanged}
-                        placeholder="Tôi muốn tìm ..."/>
+                        placeholder="Where do you want to have a meal?"/>
                 </div>
                 <div className="form-group d-flex justify-content-center">
                     <input
