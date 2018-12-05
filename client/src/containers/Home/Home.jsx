@@ -2,13 +2,14 @@
     - Goi API lay questions theo mot so option dat truoc
 */
 import React, { Component } from 'react'
-import QuestionForm from '../../components/Question/QuestionForm';
+import QuestionForm from '../Question/QuestionForm/QuestionForm';
 import QuestionList from '../../components/Question/QuestionList';
 import axios from '../../Axios-userData'
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Home.module.css';
 import ContentContainer from '../../components/UI/ContentContainer/ContentContainer';
+import BoxCard from '../../components/UI/Box/BoxCard/BoxCard';
 
 class Home extends Component {
     constructor(props) {
@@ -17,40 +18,13 @@ class Home extends Component {
         this.state = {
             questionsFeed: [],
             question: "",
-            loading: false,
-            loadingFeed: false
+            loadingFeed: false,
+            showingQuestionForm: false
         }
     }
 
     componentDidMount() {
         this.getQuestions();
-    }
-
-    submitQuestionClickedHandler = (e) => {
-        e.preventDefault();
-        const question = {
-            question: e.target["question"].value,
-            createdTime: new Date(),
-            answers: []
-        }
-        this.setState({ loading: true });
-        axios.post("/q/new", question)
-            .then(res => {
-                this.setState({ loading: false });
-                if (res.data.ok) {
-                    this.getQuestions();
-                } else {
-                    throw res.data.error;
-                }
-            })
-            .catch(err => {
-                this.setState({ loading: false });
-                console.log(err)
-            })
-    }
-
-    questionChangedHandler = (e) => {
-        this.setState({ question: e.target.value });
     }
 
     getQuestions = () => {
@@ -70,6 +44,12 @@ class Home extends Component {
             })
     }
 
+    toggleQuestionFormClickedHandler = () => {
+        this.setState(prevState => ({
+            showingQuestionForm: !prevState.showingQuestionForm
+        }))
+    }
+
     render() {
         let questionList = this.state.loadingFeed ?
             <Spinner /> :
@@ -77,12 +57,17 @@ class Home extends Component {
         return (
             <main className={classes.Home}>
                 <ContentContainer>
-                    {this.state.loading ? <Spinner /> : null}
-                    <QuestionForm
-                        submitClicked={this.submitQuestionClickedHandler}
-                        value={this.state.question}
-                        valueChanged={this.questionChangedHandler} />
-                    {questionList}
+                    <BoxCard>
+                        <span 
+                            className={classes.QuestionLink} 
+                            onClick={this.toggleQuestionFormClickedHandler}>What is your question?</span>
+                    </BoxCard>
+                    <QuestionForm 
+                        show={this.state.showingQuestionForm}
+                        modalClosed={this.toggleQuestionFormClickedHandler}
+                        submitDone={this.getQuestions} 
+                    />
+                        {questionList}
                 </ContentContainer>
             </main >
         )
