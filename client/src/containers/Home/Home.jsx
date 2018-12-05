@@ -8,7 +8,7 @@ import axios from '../../Axios-userData'
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Home.module.css';
-import ContentContainer from '../../components/UI/ContenContainer/ContentContainer';
+import ContentContainer from '../../components/UI/ContentContainer/ContentContainer';
 
 class Home extends Component {
     constructor(props) {

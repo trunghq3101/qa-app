@@ -13,7 +13,7 @@ import ContentNotFound from '../../components/UI/NotFound/ContentNotFound';
 import classes from './QuestionHolder.module.css'
 import BoxBottomBorder from '../../components/UI/Box/BoxBottomBorder/BoxBottomBorder';
 import CommentSection from '../../components/Comment/CommentSection/CommentSection';
-import ContentContainer from '../../components/UI/ContenContainer/ContentContainer';
+import ContentContainer from '../../components/UI/ContentContainer/ContentContainer';
 
 class QuestionHolder extends Component {
 

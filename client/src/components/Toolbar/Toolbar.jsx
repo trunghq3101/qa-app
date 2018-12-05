@@ -1,7 +1,7 @@
 import React from 'react'
 import Logo from '../UI/Logo/Logo'
 import classes from './Toolbar.module.css'
-import ContentContainer from '../UI/ContenContainer/ContentContainer';
+import ContentContainer from '../UI/ContentContainer/ContentContainer';
 
 export default (props) => (
     <nav className={classes.Toolbar}>

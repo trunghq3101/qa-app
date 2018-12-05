@@ -1,17 +1,16 @@
 import React from 'react'
+import Input from '../UI/Input/Input';
 
 export default (props) => (
     <div className="card">
         <div className="card-body">
             <form onSubmit={props.submitClicked}>
                 <div className="form-group mx-2">
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={props.value}
-                        onChange={props.valueChanged}
-                        name="question"
-                        placeholder="What is your question?" />
+                    <Input 
+                        inputType="question" 
+                        value={props.value} 
+                        changed={props.valueChanged}
+                        placeholder="Tôi muốn tìm ..."/>
                 </div>
                 <div className="form-group d-flex justify-content-center">
                     <input
