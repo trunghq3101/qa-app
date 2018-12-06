@@ -5,9 +5,9 @@ export default (props) => {
     return (
         <span 
             className={
-                `${classes[props.btnType]} 
-                ${props.desktopOnly && classes.DesktopOnly}
-                ${props.mobileOnly && classes.MobileOnly}`
+                props.btnType.split(" ")
+                    .map(name => classes[name])
+                    .join(" ")
             }
             onClick={props.onClick}>
             {props.children}

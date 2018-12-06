@@ -1,0 +1,11 @@
+.ModalFooter {
+    background: #fafafa;
+    border-radius: 0 0 4px 4px;
+    padding: 10px;
+    border-top: 1px solid #e2e2e2;
+    display: flex;
+}
+
+.Right {
+    justify-content: flex-end;
+}

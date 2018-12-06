@@ -1,0 +1,11 @@
+.ModalHeader {
+    background: #fafafa;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+}
+
+.Right {
+    justify-content: flex-end;
+}

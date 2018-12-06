@@ -12,8 +12,8 @@ const AskButton = (props) => {
     
     return (
         <React.Fragment>
-            <Button btnType="Super" desktopOnly {...props}>Ask a question</Button>
-            <Button btnType="Plain" mobileOnly {...props}>
+            <Button btnType="Super DesktopOnly" {...props}>Ask a question</Button>
+            <Button btnType="Plain MobileOnly" {...props}>
                 <FontAwesomeIcon icon={faPlusSquare}/>  Add
             </Button>
         </React.Fragment>
