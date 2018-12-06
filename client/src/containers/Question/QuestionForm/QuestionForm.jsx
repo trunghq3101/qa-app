@@ -20,12 +20,6 @@ class QuestionForm extends Component {
         )
     }
 
-    toggleClickedHandler = () => {
-        this.setState(prevState => ({
-            show: !prevState.show
-        }))
-    }
-
     questionChangedHandler = (e) => {
         this.setState({ question: e.target.value })
     }
@@ -40,8 +34,8 @@ class QuestionForm extends Component {
         AxiosUserData.post("/q/new", question)
             .then(res => {
                 if (res.data.ok) {
-                    this.toggleClickedHandler();
-                    this.props.submitDone();
+                    this.props.closed();
+                    this.props.submitDone && this.props.submitDone();
                 } else {
                     throw res.data.error;
                 }
@@ -55,7 +49,7 @@ class QuestionForm extends Component {
         return (
             <ModalFullScreen
                 show={this.props.show}
-                modalClosed={this.props.modalClosed}
+                modalClosed={this.props.closed}
                 modalControls={this.modalControls}>
                 <Gap />
                 <ContentBox>

@@ -10,6 +10,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Home.module.css';
 import ContentContainer from '../../components/UI/ContentContainer/ContentContainer';
 import BoxCard from '../../components/UI/Box/BoxCard/BoxCard';
+import withToggle from '../../hoc/withToggle/withToggle';
 
 class Home extends Component {
     constructor(props) {
@@ -17,10 +18,18 @@ class Home extends Component {
 
         this.state = {
             questionsFeed: [],
-            question: "",
-            loadingFeed: false,
-            showingQuestionForm: false
+            loadingFeed: false
         }
+
+        this.AskButton = (props) => (
+            <span className={classes.QuestionLink} {...props}>
+                What is your question?
+            </span>
+        )
+        this.QuestionFormWithSubmit = (props) => (
+            <QuestionForm submitDone={this.getQuestions} {...props} />
+        )
+        this.QuestionFormToggle = withToggle(this.AskButton, this.QuestionFormWithSubmit)
     }
 
     componentDidMount() {
@@ -44,12 +53,6 @@ class Home extends Component {
             })
     }
 
-    toggleQuestionFormClickedHandler = () => {
-        this.setState(prevState => ({
-            showingQuestionForm: !prevState.showingQuestionForm
-        }))
-    }
-
     render() {
         let questionList = this.state.loadingFeed ?
             <Spinner /> :
@@ -58,16 +61,9 @@ class Home extends Component {
             <main className={classes.Home}>
                 <ContentContainer>
                     <BoxCard>
-                        <span 
-                            className={classes.QuestionLink} 
-                            onClick={this.toggleQuestionFormClickedHandler}>What is your question?</span>
+                        <this.QuestionFormToggle />
                     </BoxCard>
-                    <QuestionForm 
-                        show={this.state.showingQuestionForm}
-                        modalClosed={this.toggleQuestionFormClickedHandler}
-                        submitDone={this.getQuestions} 
-                    />
-                        {questionList}
+                    {questionList}
                 </ContentContainer>
             </main >
         )
