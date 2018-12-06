@@ -5,8 +5,20 @@ import ContentContainer from '../UI/ContentContainer/ContentContainer';
 import TextButton from '../UI/Button/TextButton/TextButton';
 import QuestionForm from '../../containers/Question/QuestionForm/QuestionForm'
 import withToggle from '../../hoc/withToggle/withToggle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
-const AskButton = (props) => <TextButton btnType="Super" {...props}>Ask a question</TextButton>
+const AskButton = (props) => {
+    
+    return (
+        <React.Fragment>
+            <TextButton btnType="Super" desktopOnly {...props}>Ask a question</TextButton>
+            <TextButton btnType="Plain" mobileOnly {...props}>
+                <FontAwesomeIcon icon={faPlusSquare}/>  Add
+            </TextButton>
+        </React.Fragment>
+    )
+}
     
 export default (props) => {
 

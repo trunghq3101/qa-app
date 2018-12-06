@@ -16,3 +16,28 @@
 .Super:hover {
     border: 1px solid #8f211e;
 }
+
+.DesktopOnly {
+    display: none;
+}
+
+.MobileOnly {
+    display: inline-block;
+}
+
+@media (min-width: 600px) {
+    .DesktopOnly {
+        display: inline-block;
+    }
+    .MobileOnly {
+        display: none;
+    }
+}
+
+.Plain {
+    background: none;
+    padding: 0px 15px 0px 7px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+}
