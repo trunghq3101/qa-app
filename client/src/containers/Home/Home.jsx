@@ -2,7 +2,7 @@
     - Goi API lay questions theo mot so option dat truoc
 */
 import React, { Component } from 'react'
-import QuestionForm from '../Question/QuestionForm/QuestionForm';
+import QuestionForm from '../QuestionContainers/QuestionForm/QuestionForm';
 import QuestionList from '../../components/Question/QuestionList';
 import axios from '../../Axios-userData'
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';

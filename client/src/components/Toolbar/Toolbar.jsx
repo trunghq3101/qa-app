@@ -2,11 +2,11 @@ import React from 'react'
 import Logo from '../UI/Logo/Logo'
 import classes from './Toolbar.module.css'
 import ContentContainer from '../UI/ContentContainer/ContentContainer';
-import QuestionForm from '../../containers/Question/QuestionForm/QuestionForm'
 import withToggle from '../../hoc/withToggle/withToggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Button from '../UI/Button/Button';
+import QuestionForm from '../../containers/QuestionContainers/QuestionForm/QuestionForm'
 
 const AskButton = (props) => {
     
