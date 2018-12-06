@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Layout from './hoc/Layout/Layout';
+import Layout from './components/UI/Layout/Layout';
 import Home from './containers/Home/Home';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import QuestionHolder from './containers/QuestionHolder/QuestionHolder'

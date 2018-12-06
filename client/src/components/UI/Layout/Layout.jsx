@@ -1,5 +1,5 @@
 import React from 'react'
-import Toolbar from '../../components/Toolbar/Toolbar';
+import Toolbar from '../../Toolbar/Toolbar';
 
 export default (props) => (
     <div className="container-fluid px-0">
