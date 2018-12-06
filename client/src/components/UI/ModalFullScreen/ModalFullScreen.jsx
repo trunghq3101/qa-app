@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './ModalFullScreen.module.css'
 import ContentContainer from '../ContentContainer/ContentContainer';
-import TextButton from '../Button/TextButton/TextButton';
+import Button from '../Button/Button';
 
 export default (props) => (
     <div className={classes.ModalFullScreen} hidden={!props.show}>
@@ -9,7 +9,7 @@ export default (props) => (
             <ContentContainer>
                 <div style={{ display: "flex", flexDirection: "row"}}>
                     <div style={{ flexGrow: 1}}>
-                        <TextButton btnType="Plain" onClick={props.modalClosed}>Close</TextButton>
+                        <Button btnType="Plain" onClick={props.modalClosed}>Close</Button>
                     </div>
                     <div>
                         {props.modalControls}

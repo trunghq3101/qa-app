@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './TextButton.module.css'
+import classes from './Button.module.css'
 
 export default (props) => {
     return (

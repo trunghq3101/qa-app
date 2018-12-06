@@ -5,7 +5,7 @@ import ContentBox from '../../../components/UI/ContentBox/ContentBox'
 import Gap from '../../../components/UI/Gap/Gap'
 import AxiosUserData from '../../../Axios-userData';
 import withAxiosErrorHandler from '../../../hoc/withErrorHandler/withAxiosErrorHandler';
-import TextButton from '../../../components/UI/Button/TextButton/TextButton';
+import Button from '../../../components/UI/Button/Button';
 
 class QuestionForm extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class QuestionForm extends Component {
         }
 
         this.modalControls = (
-            <TextButton btnType="Plain" onClick={this.questionSubmittedHandler}>Add</TextButton>
+            <Button btnType="Plain" onClick={this.questionSubmittedHandler}>Add</Button>
         )
     }
 

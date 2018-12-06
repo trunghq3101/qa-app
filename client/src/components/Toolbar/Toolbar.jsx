@@ -2,20 +2,20 @@ import React from 'react'
 import Logo from '../UI/Logo/Logo'
 import classes from './Toolbar.module.css'
 import ContentContainer from '../UI/ContentContainer/ContentContainer';
-import TextButton from '../UI/Button/TextButton/TextButton';
 import QuestionForm from '../../containers/Question/QuestionForm/QuestionForm'
 import withToggle from '../../hoc/withToggle/withToggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import Button from '../UI/Button/Button';
 
 const AskButton = (props) => {
     
     return (
         <React.Fragment>
-            <TextButton btnType="Super" desktopOnly {...props}>Ask a question</TextButton>
-            <TextButton btnType="Plain" mobileOnly {...props}>
+            <Button btnType="Super" desktopOnly {...props}>Ask a question</Button>
+            <Button btnType="Plain" mobileOnly {...props}>
                 <FontAwesomeIcon icon={faPlusSquare}/>  Add
-            </TextButton>
+            </Button>
         </React.Fragment>
     )
 }
