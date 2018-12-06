@@ -1,5 +1,5 @@
 import React from 'react'
-import AnswerHolder from '../../containers/AnswerHolder/AnswerHolder';
+import AnswerHolder from '../../containers/AnswerContainers/AnswerHolder/AnswerHolder'
 
 export default (props) => {
     return (

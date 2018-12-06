@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import AnswerView from '../../components/Answer/AnswerView';
-import ControlBar from '../../components/ControlBar/ControlBar';
-import Control from '../../components/Control/Control'
-import CommentForm from '../Comment/CommentForm/CommentForm';
-import CommentList from '../../components/Comment/CommentList';
-import AxiosUserData from '../../Axios-userData';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import BoxBottomBorder from '../../components/UI/Box/BoxBottomBorder/BoxBottomBorder';
-import CommentSection from '../../components/Comment/CommentSection/CommentSection';
+import AnswerView from '../../../components/Answer/AnswerView';
+import ControlBar from '../../../components/ControlBar/ControlBar';
+import Control from '../../../components/Control/Control'
+import CommentForm from '../../Comment/CommentForm/CommentForm';
+import CommentList from '../../../components/Comment/CommentList';
+import AxiosUserData from '../../../Axios-userData';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import BoxBottomBorder from '../../../components/UI/Box/BoxBottomBorder/BoxBottomBorder';
+import CommentSection from '../../../components/Comment/CommentSection/CommentSection';
 
 export default class AnswerHolder extends Component {
 
