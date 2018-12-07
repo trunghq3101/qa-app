@@ -8,12 +8,16 @@ import Control from '../../components/Control/Control';
 import AxiosUserData from '../../Axios-userData';
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import AnswerWithHandler from '../../hoc/ControlWithHandler/AnswerWithHandler';
 import ContentNotFound from '../../components/UI/NotFound/ContentNotFound';
 import classes from './QuestionHolder.module.css'
 import BoxBottomBorder from '../../components/UI/Box/BoxBottomBorder/BoxBottomBorder';
 import CommentSection from '../../components/Comment/CommentSection/CommentSection';
 import ContentContainer from '../../components/UI/ContentContainer/ContentContainer';
+import withToggle from '../../hoc/withToggle/withToggle';
+import Button from '../../components/UI/Button/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import AnswerForm from '../AnswerContainers/AnswerForm/AnswerForm';
 
 class QuestionHolder extends Component {
 
@@ -24,6 +28,15 @@ class QuestionHolder extends Component {
             question: null,
             loadingQuestion: false
         }
+
+        this.AnswerFormToggle = withToggle(
+            (props) => (
+                <Button btnType="Flat" {...props}>
+                    <FontAwesomeIcon icon={faPencilAlt} /> Answer
+                </Button>
+            ),
+            (props) => <AnswerForm questionId={this.state.question.id} {...props}/>
+        )
     }
 
     componentDidMount() {
@@ -68,10 +81,6 @@ class QuestionHolder extends Component {
             questionHolder = <ContentNotFound />
         } else {
 
-            let AnswerButton = AnswerWithHandler(
-                Control, "button", "Answer",
-                this.props.match.params.id,
-                this.getQuestionData);
 
             questionHolder = (
                 <React.Fragment>
@@ -80,7 +89,7 @@ class QuestionHolder extends Component {
                         <ControlBar
                             left={(
                                 <React.Fragment>
-                                    <AnswerButton />
+                                    <this.AnswerFormToggle />
                                     <Control
                                         ctrlType="button"
                                         ctrlName="Follow"
