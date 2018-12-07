@@ -20,17 +20,17 @@ QuestionSchema.virtual("url")
 
 QuestionSchema.virtual("numAnswers")
     .get(function() {
-        return this.answers.length || 0
+        return this.answers ? this.answers.length : 0
     })
 
 QuestionSchema.virtual("numComments")
     .get(function() {
-        return this.comments.length || 0
+        return this.comments ? this.comments.length : 0
     })
 
 QuestionSchema.virtual("createdTimeToString")
     .get(function() {
-        return this.createdTime.toDateString()
+        return this.createdTime && this.createdTime.toDateString()
     })
 
 QuestionSchema.set("toJSON", { getters: true });

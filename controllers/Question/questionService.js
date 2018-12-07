@@ -8,6 +8,12 @@ const questionService = {
             .exec();
     },
 
+    getQuestionsIds: () => {
+        return QuestionSchema
+            .find({}, "id")
+            .exec();
+    },
+
     getQuestion: (id) => {
         return QuestionSchema
             .findById(id)

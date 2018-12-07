@@ -6,6 +6,8 @@ const commentController = require('../controllers/Comment/commentController')
 
 router.get('/q/all', questionController.getQuestions);
 
+router.get('/q/all_id', questionController.getQuestionsIds)
+
 router.post('/q/new', questionController.saveNewQuestion);
 
 router.post('/q/update', questionController.updateQuestion);

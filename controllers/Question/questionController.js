@@ -14,6 +14,18 @@ const questionController = {
         }
     },
 
+    getQuestionsIds: async (req, res, next) => {
+        try {
+            let questionsIds = await questionService.getQuestionsIds()
+            res.json({
+                ok: true,
+                result: questionsIds
+            })
+        } catch (error) {
+            next(error)
+        }
+    },
+
     saveNewQuestion: async (req, res, next) => {
         try {
             let newQuestion = await questionService.saveNewQuestion(req.body);
