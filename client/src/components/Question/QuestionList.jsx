@@ -1,48 +1,21 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import classes from './Question.module.css'
-import { Link } from 'react-router-dom'
-import ControlBar from '../ControlBar/ControlBar';
-import AnswerWithHandler from '../../hoc/ControlWithHandler/AnswerWithHandler';
-import Control from '../Control/Control';
-import BoxCard from '../UI/Box/BoxCard/BoxCard';
+import PropTypes from 'prop-types'
+import QuestionCardView from './QuestionCardView';
 
-export default (props) => {
+export default class QuestionList extends PureComponent {
 
-    return (
-        <div className={`${classes.QuestionList}`}>
-            {props.questions.map(item => {
+    static propTypes = {
+        questions: PropTypes.arrayOf(PropTypes.object)
+    }
 
-                const AnswerButton = AnswerWithHandler(Control, "button", "Answer", item.id, () => { });
-
-                return (
-                    <BoxCard key={item.id}>
-                        <Link to={item.url}>
-                            <h4>
-                                {item.question}
-                            </h4>
-                        </Link>
-
-                        <span className="text-muted">
-                            <Link to={item.url} className="text-muted">
-                                <strong >
-                                    {item.numAnswers === 0 ?
-                                        "No Answer Yet" :
-                                        `${item.numAnswers} Answers`}
-                                </strong>
-                            </Link> |  <small>Posted at {item.createdTimeToString}</small>
-                        </span>
-
-                        <ControlBar
-                            left={(
-                                <React.Fragment>
-                                    <AnswerButton />
-                                </React.Fragment>
-                            )}
-                        />
-                    </BoxCard>
-                )
-            }
-            )}
-        </div>
-    )
+    render() {
+        return (
+            <div className={`${classes.QuestionList}`}>
+                {this.props.questions.map(item => (
+                    <QuestionCardView key={item._id} id={item._id}/>
+                ))}
+            </div>
+        )
+    }
 }

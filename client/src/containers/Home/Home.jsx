@@ -17,8 +17,7 @@ class Home extends Component {
         super(props)
 
         this.state = {
-            questionsFeed: [],
-            loadingFeed: false
+            questions: null
         }
 
         this.AskButton = (props) => (
@@ -37,26 +36,28 @@ class Home extends Component {
     }
 
     getQuestions = () => {
-        this.setState({ loadingFeed: true });
-        axios.get(`/q/all`)
+        axios.get(`/q/all_id`)
             .then(res => {
-                this.setState({ loadingFeed: false });
                 if (res.data.ok) {
-                    this.setState({ questionsFeed: res.data.result })
+                    this.setState(prevState => ({
+                        questions: [...res.data.result]
+                    }))
                 } else {
                     throw res.data.error;
                 }
             })
             .catch(err => {
-                this.setState({ loadingFeed: false })
                 console.log(err)
             })
     }
 
     render() {
-        let questionList = this.state.loadingFeed ?
-            <Spinner /> :
-            <QuestionList questions={this.state.questionsFeed} />;
+        let questionList = null
+
+        this.state.questions ?
+            questionList = <QuestionList questions={this.state.questions} /> :
+            questionList = <Spinner />
+
         return (
             <main className={classes.Home}>
                 <ContentContainer>

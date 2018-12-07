@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import QuestionView from '../../components/Question/QuestionView';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import AnswerList from '../../components/Answer/AnswerList';
@@ -19,7 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import AnswerForm from '../AnswerContainers/AnswerForm/AnswerForm';
 
-class QuestionHolder extends Component {
+class QuestionHolder extends PureComponent {
 
     constructor(props) {
         super(props)
@@ -43,36 +43,7 @@ class QuestionHolder extends Component {
         this.getQuestionData();
     }
 
-    getQuestionData = () => {
-        this.setState({
-            loadingQuestion: true,
-            question: null
-        });
-        AxiosUserData.get(`/q/${this.props.match.params.id}`)
-            .then(res => {
-                this.setState({ loadingQuestion: false });
-                if (res.data.ok) {
-                    this.setState({ question: res.data.result })
-                } else {
-                    throw res.data.error;
-                }
-            })
-            .catch(err => {
-                this.setState({ loadingQuestion: false });
-                console.log(err);
-            })
-    }
-
-    followClickedHandler = () => {
-        alert("Get notifications when have a new answer");
-    }
-
-    shareClickedHandler = () => {
-        alert("Share to others");
-    }
-
     render() {
-
         let questionHolder = null;
 
         if (this.state.loadingQuestion) {
@@ -80,8 +51,6 @@ class QuestionHolder extends Component {
         } else if (!this.state.question) {
             questionHolder = <ContentNotFound />
         } else {
-
-
             questionHolder = (
                 <React.Fragment>
                     <BoxBottomBorder>
@@ -145,6 +114,35 @@ class QuestionHolder extends Component {
             </main >
         )
     }
+
+    getQuestionData = () => {
+        this.setState({
+            loadingQuestion: true,
+            question: null
+        });
+        AxiosUserData.get(`/q/${this.props.match.params.id}`)
+            .then(res => {
+                this.setState({ loadingQuestion: false });
+                if (res.data.ok) {
+                    this.setState({ question: res.data.result })
+                } else {
+                    throw res.data.error;
+                }
+            })
+            .catch(err => {
+                this.setState({ loadingQuestion: false });
+                console.log(err);
+            })
+    }
+
+    followClickedHandler = () => {
+        alert("Get notifications when have a new answer");
+    }
+
+    shareClickedHandler = () => {
+        alert("Share to others");
+    }
+
 }
 
 export default withAxiosErrorHandler(QuestionHolder, AxiosUserData);

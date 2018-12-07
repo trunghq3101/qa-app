@@ -48,8 +48,8 @@ class QuestionForm extends Component {
         AxiosUserData.post("/q/new", question)
             .then(res => {
                 if (res.data.ok) {
-                    this.props.closed();
                     this.props.submitDone && this.props.submitDone();
+                    this.props.closed();
                 } else {
                     throw res.data.error;
                 }

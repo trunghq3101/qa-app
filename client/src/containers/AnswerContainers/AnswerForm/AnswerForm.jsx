@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import ModalFullScreen from '../../../components/UI/ModalFullScreen/ModalFullScreen'
 import ModalContent from '../../../components/UI/Modal/ModalContent/ModalContent'
 import Input from '../../../components/UI/Input/Input'
@@ -7,7 +7,7 @@ import withAxiosErrorHandler from '../../../hoc/withErrorHandler/withAxiosErrorH
 import Button from '../../../components/UI/Button/Button';
 import classes from '../../../assets/lib/GlobalStyle.module.css'
 
-class AnswerForm extends Component {
+class AnswerForm extends PureComponent {
     constructor(props) {
         super(props)
 
@@ -33,8 +33,8 @@ class AnswerForm extends Component {
         }
         AxiosUserData.post("/a/new", answer)
             .then(res => {
-                this.props.closed()
                 this.props.submitDone && this.props.submitDone()
+                this.props.closed()
             })
             .catch(err => {
                 console.log(err);
@@ -42,7 +42,6 @@ class AnswerForm extends Component {
     }
 
     render() {
-
         const content = (
             <Input
                 inputType="answer"
