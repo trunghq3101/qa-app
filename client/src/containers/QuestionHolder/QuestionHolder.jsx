@@ -15,8 +15,9 @@ import ContentContainer from '../../components/UI/ContentContainer/ContentContai
 import withToggle from '../../hoc/withToggle/withToggle';
 import Button from '../../components/UI/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import AnswerForm from '../AnswerContainers/AnswerForm/AnswerForm';
+import withToggleWrapper from '../../hoc/withToggleWrapper/withToggleWrapper';
 
 class QuestionHolder extends PureComponent {
 
@@ -36,6 +37,15 @@ class QuestionHolder extends PureComponent {
             ),
             (props) => <AnswerForm questionId={this.state.question.id} {...props} />
         )
+
+        this.CommentSectionToggle = withToggleWrapper((props) => (
+            <CommentSection {...props}>
+                <CommentForm belongToId={this.state.question.id} commentSubmitted={this.getQuestionData} />
+                <CommentList commentListId={this.state.question.comments} />
+            </CommentSection>
+        ))
+
+        this.commentSectionRef = React.createRef()
     }
 
     componentDidMount() {
@@ -53,15 +63,19 @@ class QuestionHolder extends PureComponent {
             questionHolder = (
                 <React.Fragment>
                     <BoxBottomBorder>
+
                         <QuestionView data={this.state.question} />
+
                         <ControlBar>
                             <this.AnswerFormToggle />
+                            <Button 
+                                btnType="Flat RoundCorner Gray" 
+                                onClick={() => this.commentSectionRef.current.toggleHandler()}>
+                                <FontAwesomeIcon icon={faCommentAlt} /> Comment
+                            </Button>
                         </ControlBar>
 
-                        <CommentSection>
-                            <CommentForm belongToId={this.state.question.id} commentSubmitted={this.getQuestionData} />
-                            <CommentList commentListId={this.state.question.comments} />
-                        </CommentSection>
+                        <this.CommentSectionToggle ref={this.commentSectionRef}/>
 
                     </BoxBottomBorder>
 
