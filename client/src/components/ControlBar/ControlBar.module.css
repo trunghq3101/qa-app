@@ -1,26 +1,5 @@
-.DesktopOnly {
-    display: none
-}
-
-.MobileOnly {
-    display: block;
-}
-
-@media (min-width: 800px) {
-    .DesktopOnly {
-        display: block
-    }
-    .MobileOnly {
-        display: none
-    }
-}
-
-.ControlBar button {
-    background-color: white;
-    border: none;
-    border-radius: 1rem;
-}
-
-.ControlBar button:hover, .ControlBar button:focus, .ControlBar button:active {
-    background-color: #f9f9f9;
+.ControlBar {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0;
 }

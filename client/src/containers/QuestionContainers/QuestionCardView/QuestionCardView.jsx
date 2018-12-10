@@ -60,7 +60,7 @@ class QuestionCardView extends PureComponent {
                             {question}
                         </h4>
                     </Link>
-    
+
                     <span className="text-muted">
                         <Link to={url} className="text-muted">
                             <strong >
@@ -70,12 +70,10 @@ class QuestionCardView extends PureComponent {
                             </strong>
                         </Link> |  <small>Posted at {createdTimeToString}</small>
                     </span>
-    
-                    <ControlBar
-                        left={(
-                            <this.AnswerFormToggle />
-                        )}
-                    />
+
+                    <ControlBar>
+                        <this.AnswerFormToggle />
+                    </ControlBar>
                 </React.Fragment>
             )
         }

@@ -35,7 +35,7 @@ class QuestionHolder extends PureComponent {
                     <FontAwesomeIcon icon={faPencilAlt} /> Answer
                 </Button>
             ),
-            (props) => <AnswerForm questionId={this.state.question.id} {...props}/>
+            (props) => <AnswerForm questionId={this.state.question.id} {...props} />
         )
     }
 
@@ -55,40 +55,9 @@ class QuestionHolder extends PureComponent {
                 <React.Fragment>
                     <BoxBottomBorder>
                         <QuestionView data={this.state.question} />
-                        <ControlBar
-                            left={(
-                                <React.Fragment>
-                                    <this.AnswerFormToggle />
-                                    <Control
-                                        ctrlType="button"
-                                        ctrlName="Follow"
-                                        clicked={this.followClickedHandler} />
-                                </React.Fragment>
-                            )}
-                            rightDesktop={(
-                                <React.Fragment>
-                                    <Control
-                                        ctrlType="icon"
-                                        ctrlName="Comment"
-                                        clicked={this.commentClickedHandler} />
-                                    <Control
-                                        ctrlType="icon"
-                                        ctrlName="Share"
-                                        clicked={this.shareClickedHandler} />
-                                </React.Fragment>
-                            )}
-                            moreMobile={(
-                                <React.Fragment>
-                                    <Control
-                                        ctrlType="text"
-                                        ctrlName="Comment"
-                                        clicked={this.commentClickedHandler} />
-                                    <Control
-                                        ctrlType="text"
-                                        ctrlName="Share"
-                                        clicked={this.shareClickedHandler} />
-                                </React.Fragment>
-                            )} />
+                        <ControlBar>
+                            <this.AnswerFormToggle />
+                        </ControlBar>
 
                         <CommentSection>
                             <CommentForm belongToId={this.state.question.id} commentSubmitted={this.getQuestionData} />
