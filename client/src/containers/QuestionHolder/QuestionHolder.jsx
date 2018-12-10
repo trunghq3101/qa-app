@@ -4,7 +4,6 @@ import ControlBar from '../../components/ControlBar/ControlBar';
 import AnswerList from '../../components/Answer/AnswerList';
 import CommentForm from '../Comment/CommentForm/CommentForm';
 import CommentList from '../../components/Comment/CommentList';
-import Control from '../../components/Control/Control';
 import AxiosUserData from '../../Axios-userData';
 import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';

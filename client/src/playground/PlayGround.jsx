@@ -1,5 +1,4 @@
 import React, { Component, PureComponent } from 'react'
-import Axios from 'axios';
 
 class ChildComp extends PureComponent {
 
