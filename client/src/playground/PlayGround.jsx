@@ -1,43 +1,57 @@
 import React, { Component, PureComponent } from 'react'
+import Axios from 'axios';
 
 class ChildComp extends PureComponent {
 
+    state = {
+        value: "x"
+    }
+
+    componentDidMount() {
+        console.log("mounted")
+    }
+
     componentWillUpdate() {
-        console.log("Child will update")
+        console.log("updating")
+        /* Axios.get("/api/q/5c0a00dfea5eca0c43ba0c95")
+            .then(res => {
+                //this.setState({ value: res.data })
+            })
+            .catch(err => true) */
     }
 
     render() {
-        console.log("Child render")
         return (
-            <div>
-                {this.props.value}
+            <div style={{ margin: "10px", backgroundColor: "yellow" }}>
+                "x"
             </div>
         )
     }
 }
 
-export default class PlayGround extends Component {
+class PlayGround extends Component {
     state = {
-        list: new Array(1000).fill(0).map((v, i) => i)
+        list: [],
+        change: false
     }
 
     clickedHandler = () => {
-        this.setState(prevState => ({
-            list: [...prevState.list, prevState.list[prevState.list.length-1] + 1]
-        }))
+        this.setState({ list: new Array(1000).fill(1, 0).map((item, index) => index) })
     }
 
-    componentWillUpdate() {
-        console.log("Playground will update")
+    componentDidUpdate() {
+        console.log("Playground updated")
+        if (!this.state.change) this.setState({ change: true })
     }
 
     render() {
-        console.log("Playground render")
         return (
             <div style={{ paddingTop: "60px" }}>
                 <button onClick={this.clickedHandler}>Change state</button>
-                {this.state.list.map(item => <ChildComp key={item} value={item}/>)}
+                {this.state.list.map(item => <ChildComp key={item} id={item} change={this.state.change} />)}
             </div>
         )
     }
 }
+
+export default PlayGround

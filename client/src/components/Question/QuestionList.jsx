@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import classes from './Question.module.css'
 import PropTypes from 'prop-types'
-import QuestionCardView from './QuestionCardView';
+import QuestionCardView from '../../containers/QuestionContainers/QuestionCardView/QuestionCardView';
 
 export default class QuestionList extends PureComponent {
 

@@ -5,12 +5,14 @@ const questionService = {
     getQuestions: () => {
         return QuestionSchema
             .find()
+            .limit(10)
             .exec();
     },
 
     getQuestionsIds: () => {
         return QuestionSchema
             .find({}, "id")
+            .limit(10)
             .exec();
     },
 

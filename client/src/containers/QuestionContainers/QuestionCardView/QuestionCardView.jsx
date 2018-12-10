@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import BoxCard from '../UI/Box/BoxCard/BoxCard';
+import BoxCard from '../../../components/UI/Box/BoxCard/BoxCard';
 import { Link } from 'react-router-dom'
-import Button from '../UI/Button/Button';
+import Button from '../../../components/UI/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-import ControlBar from '../ControlBar/ControlBar'
-import withToggle from '../../hoc/withToggle/withToggle';
-import AnswerForm from '../../containers/AnswerContainers/AnswerForm/AnswerForm';
-import Spinner from '../UI/Spinner/Spinner';
-import AxiosUserData from '../../Axios-userData';
-import withAxiosErrorHandler from '../../hoc/withErrorHandler/withAxiosErrorHandler';
+import ControlBar from '../../../components/ControlBar/ControlBar'
+import withToggle from '../../../hoc/withToggle/withToggle';
+import AnswerForm from '../../AnswerContainers/AnswerForm/AnswerForm';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import AxiosUserData from '../../../Axios-userData';
+import withAxiosErrorHandler from '../../../hoc/withErrorHandler/withAxiosErrorHandler';
 
 class QuestionCardView extends PureComponent {
 
