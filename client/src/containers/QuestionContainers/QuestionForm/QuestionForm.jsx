@@ -66,7 +66,8 @@ class QuestionForm extends Component {
                     inputType="question"
                     value={this.state.value}
                     changed={this.questionChangedHandler}
-                    placeholder="What is your question?" />
+                    placeholder="What is your question?" 
+                    isFocus={this.props.show}/>
             </ModalContent>
         )
         return (
@@ -84,7 +85,7 @@ class QuestionForm extends Component {
                         show={this.props.show}
                         modalClosed={this.props.closed}>
                         <ModalHeader right>
-                            <Button btnType="Flat Round Gray" onClick={this.props.closed}>
+                            <Button btnType="Round Gray" onClick={this.props.closed}>
                                 <FontAwesomeIcon icon={faTimes}/>
                             </Button>
                         </ModalHeader>

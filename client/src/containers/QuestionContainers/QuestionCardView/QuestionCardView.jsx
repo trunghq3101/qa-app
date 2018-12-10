@@ -23,7 +23,7 @@ class QuestionCardView extends PureComponent {
 
         this.AnswerFormToggle = withToggle(
             (props) => (
-                <Button btnType="Flat" {...props}>
+                <Button btnType="Flat RoundCorner Gray" {...props}>
                     <FontAwesomeIcon icon={faPencilAlt} /> Answer
                 </Button>
             ),

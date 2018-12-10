@@ -11,8 +11,25 @@ export default class TextareaAutoResize extends Component {
 
       this.minRows = 1
       this.maxRows = 10
+
+      this.textInput = React.createRef()
     }
-    
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.isFocus && this.props.isFocus !== prevProps.isFocus) this.textInput.current.focus()
+    }
+
+    render() {
+        const { isFocus, ...restProps } =  this.props
+        return (
+            <textarea 
+                {...restProps}
+                rows={this.state.rows}
+                onChange={this.changedHandler}
+                style={{resize: "none"}}
+                ref={this.textInput}/>
+        )
+    }
 
     changedHandler = (e) => {
         const lineHeight = ~~(
@@ -23,15 +40,6 @@ export default class TextareaAutoResize extends Component {
         e.target.rows = curRows
         this.setState({ rows: curRows })
         this.props.onChange(e)
-    }
-    render() {
-        return (
-            <textarea 
-                {...this.props}
-                rows={this.state.rows}
-                onChange={this.changedHandler}
-                style={{resize: "none"}}/>
-        )
     }
 }
 

@@ -13,7 +13,8 @@ export default (props) => {
                 onChange={props.changed}
                 value={props.value}
                 placeholder={props.placeholder}
-                className={`${classes.Input} ${classes.Question}`} />
+                className={`${classes.Input} ${classes.Question}`} 
+                isFocus={props.isFocus}/>
             break;
 
         case "answer":
@@ -22,7 +23,8 @@ export default (props) => {
                 onChange={props.changed}
                 value={props.value}
                 placeholder={props.placeholder}
-                className={`${classes.Input} ${classes.Answer}`} />
+                className={`${classes.Input} ${classes.Answer}`} 
+                isFocus={props.isFocus}/>
             break;
 
         default:
