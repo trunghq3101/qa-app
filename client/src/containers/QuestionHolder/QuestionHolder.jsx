@@ -117,14 +117,6 @@ class QuestionHolder extends PureComponent {
             })
     }
 
-    followClickedHandler = () => {
-        alert("Get notifications when have a new answer");
-    }
-
-    shareClickedHandler = () => {
-        alert("Share to others");
-    }
-
 }
 
 export default withAxiosErrorHandler(QuestionHolder, AxiosUserData);
